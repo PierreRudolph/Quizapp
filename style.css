@@ -30,16 +30,41 @@ body {
 
 
 .sidebar-card a {
-    margin-top: 15px;
     color: lightgray;
     text-decoration: none;
+    font-family: 'RUBIK';
+    margin-left: 20px;
+
 }
 
 .sidebar-card a:hover {
     color: white;
 }
 
-.card-right {
+.card-links {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    margin-top: 30px;
+    width: 109px;
+    height: 140px;
+}
+
+.card-links-inner-div {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+
+}
+
+.link-bark {
+
+    background-color: white;
+    width: 5px;
+    height: 15px;
+}
+
+.card-right-div {
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;
@@ -47,9 +72,32 @@ body {
     display: flex;
     align-items: center;
     flex: 1;
+    border-radius: 3%
 }
 
-.card-right img {
+.card-right-div img {
     height: 100%;
     object-fit: contain;
+}
+
+.card-title {
+    font-family: 'PT', sans-serif;
+    font-weight: bold;
+}
+
+.card-text {
+    font-family: 'PT', sans-serif;
+}
+
+.button-start {
+    background-color: #FF5300;
+    color: white;
+    position: absolute;
+    right: 25px;
+    bottom: 25px;
+}
+
+.button-start:hover {
+    transition: all 225ms ease-in-out;
+    background-color: #FF732F;
 }
