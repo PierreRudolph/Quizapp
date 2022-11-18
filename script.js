@@ -8,11 +8,12 @@ let natureQuiz = [{
     'solution': 'Russland'
 
 
-},];
+}];
 
 function startQuiz(actualQuiz) {
     sidebarLinkActive(1);
     changeBackground();
+
     let cardBody = document.getElementById('card-body');
     cardBody.innerHTML = getCardinnerHTML(actualQuiz);
 
@@ -23,26 +24,26 @@ function getCardinnerHTML(actualQuiz) {
     return /*html*/ `
 
 
-<span>${actualQuiz['question']}</span>
+    <span>${actualQuiz['question']}</span>
 
     <div class="list-group">
      
-        <a href="#" class="question-link list-group-item" onclick="proofAnswer(${actualQuiz},1)">
+        <a href="#" class="question-link list-group-item" onclick="proofAnswer(actualQuiz,1)">
             <div id="answer1"  class="question-letter">A</div>
             <span>${actualQuiz['answerA']}</span>
         </a>
        
-        <a href="#" class="question-link list-group-item"  onclick="proofAnswer(${actualQuiz},2)">
+        <a href="#" class="question-link list-group-item"  onclick="proofAnswer(actualQuiz,2)">
             <div id="answer2" class="question-letter">B</div>    
             <span>${actualQuiz['answerB']}</span>
         </a>
         
-        <a href="#" class="question-link list-group-item"  onclick="proofAnswer(${actualQuiz},3)">
+        <a href="#" class="question-link list-group-item"  onclick="proofAnswer(actualQuiz,3)">
             <div id="answer3" class="question-letter">C</div>
             <span>${actualQuiz['answerC']}</span>
         </a>
   
-        <a href="#"  class="question-link list-group-item" onclick="proofAnswer(${actualQuiz},4)">
+        <a href="#"  class="question-link list-group-item" onclick="proofAnswer(actualQuiz,4)">
             <div id="answer4" class="question-letter">D</div>
             <span>${actualQuiz['answerD']}</span>
         </a>
