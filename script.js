@@ -1,4 +1,5 @@
 let natureQuiz = [{
+    'quizname': 'nature',
     'question':
         'Welches Land wird wegen seiner riesigen Waldfächen, auch als Lunge der Erde bezeichnet?',
     'answerA': 'China',
@@ -108,6 +109,7 @@ let natureQuiz = [{
 }];
 
 let historyQuiz = [{
+    'quizname': 'history',
     'question': 'Warum warf man in der Schweiz in den 80ern, etwa 52.000 Hühneköpfe aus Helikoptern?',
     'answerA': 'Seuchenexperimente',
     'answerB': 'zur rettung des Fuchsbestands',
@@ -135,43 +137,49 @@ let historyQuiz = [{
 }
 ]
 
-let currentQuiz = natureQuiz;
 
-function startQuiz(currentQuiz) {
-    showCounter(currentQuiz);
+function startQuiz() {
+    let cardBody = document.getElementById('card-body');
+    globalThis.globalQuiz = natureQuiz;
+    showCounter(0);
     sidebarLinkActive(1);
     changeBackground();
-
-    let cardBody = document.getElementById('card-body');
-    cardBody.innerHTML = getCardinnerHTML(currentQuiz);
-
+    cardBody.innerHTML = getCardinnerHTML(globalQuiz[0]);
 }
 
 
-function getCardinnerHTML(actualQuiz) {
+function newQuiz(globalQuiz) {
+    let cardBody = document.getElementById('card-body');
+    showCounter(0);
+    sidebarLinkActive(2);
+    cardBody.innerHTML = getCardinnerHTML(globalQuiz[0]);
+}
+
+
+function getCardinnerHTML(currentQuiz) {
     return /*html*/ `
-    <span>${actualQuiz['question']}</span>
+    <span>${currentQuiz['question']}</span>
 
     <div class="list-group">
      
-        <a href="#" id="answerlink1" class="question-link list-group-item" onclick="checkQuiz(${actualQuiz['position']},'${actualQuiz['solution']}','${actualQuiz['answerA']}',1)">
+        <a href="#" id="answerlink1" class="question-link list-group-item" onclick="proofAnswer(${currentQuiz['position']},'${currentQuiz['solution']}','${currentQuiz['answerA']}',1)">
             <div id="answerletter1"  class="question-letter">A</div>
-            <span>${actualQuiz['answerA']}</span>
+            <span>${currentQuiz['answerA']}</span>
         </a>
        
-        <a href="#" id="answerlink2" class="question-link list-group-item"  onclick="checkQuiz(${actualQuiz['position']},'${actualQuiz['solution']}','${actualQuiz['answerB']}',2)">
+        <a href="#" id="answerlink2" class="question-link list-group-item"  onclick="proofAnswer(${currentQuiz['position']},'${currentQuiz['solution']}','${currentQuiz['answerB']}',2)">
             <div id="answerletter2" class="question-letter">B</div>    
-            <span>${actualQuiz['answerB']}</span>
+            <span>${currentQuiz['answerB']}</span>
         </a>
         
-        <a href="#" id="answerlink3" class="question-link list-group-item"  onclick="checkQuiz(${actualQuiz['position']},'${actualQuiz['solution']}','${actualQuiz['answerC']}',3)">
+        <a href="#" id="answerlink3" class="question-link list-group-item"  onclick="proofAnswer(${currentQuiz['position']},'${currentQuiz['solution']}','${currentQuiz['answerC']}',3)">
             <div id="answerletter3" class="question-letter">C</div>
-            <span>${actualQuiz['answerC']}</span>
+            <span>${currentQuiz['answerC']}</span>
         </a>
   
-        <a href="#"  id="answerlink4" class="question-link list-group-item" onclick="checkQuiz(${actualQuiz['position']},'${actualQuiz['solution']}','${actualQuiz['answerD']}',4)">
+        <a href="#"  id="answerlink4" class="question-link list-group-item" onclick="proofAnswer(${currentQuiz['position']},'${currentQuiz['solution']}','${currentQuiz['answerD']}',4)">
             <div id="answerletter4" class="question-letter">D</div>
-            <span>${actualQuiz['answerD']}</span>
+            <span>${currentQuiz['answerD']}</span>
         </a>
 
     </div>
@@ -179,17 +187,15 @@ function getCardinnerHTML(actualQuiz) {
 }
 
 
-function checkQuiz(position, solution, answer, answerI) {
+function proofAnswer(position, solution, answer, answerI) {
     let newPosition = position + 1;
 
     if (solution == answer) {
-
         renderRightAnswer(answerI);
-        setTimeout(function () { nextQuestion(newPosition) }, 1000);
-
+        setTimeout(function () { nextQuestion(newPosition) }, 100);
     } else {
         renderWrongAnswer(answerI)
-        setTimeout(function () { nextQuestion(newPosition) }, 1000);
+        setTimeout(function () { nextQuestion(newPosition) }, 100);
     }
 }
 
@@ -198,34 +204,53 @@ function nextQuestion(newPosition) {
     let callCounter = 0;
     let cardBody = document.getElementById('card-body');
 
-    if (newPosition < currentQuiz.length) {
-        showCounter();
-        cardBody.innerHTML = getCardinnerHTML(currentQuiz[newPosition]);
+    if (newPosition < globalQuiz.length) {
+        showCounter(newPosition);
+        cardBody.innerHTML = getCardinnerHTML(globalQuiz[newPosition]);
     } else {
         callCounter + 1;
-
-    }
-
-    if (callCounter >= 1) {
         changeCurrentQuiz(callCounter);
-    } else { }
+    }
 }
+
 
 function changeCurrentQuiz(callCounter) {
-
-    if (callCounter == 1) {
-        currentQuiz = historyQuiz;
+    if (callCounter = 1) {
+        globalThis.globalQuiz = historyQuiz;
+        hideBarkCounter(globalQuiz[0]['quizname']);
+        newQuiz(globalQuiz);
     } else { }
-    startQuiz();
 }
 
 
-function showCounter() {
-    let counterDiv = document.getElementById('counter-div');
-    let counter = document.getElementById('nature-counter');
-    let number = currentQuiz['position'];
+/*function getCurrentQuizName(i) {
+    let i = 0;
+    if (globalQuiz['quizname'] = 'nature') {
+        i = 1;
+    } if (globalQuiz['quizname'] = 'history') {
+        i = 2;
+    }
+    return i;
+}*/
+
+
+function showCounter(newPosition) {
+    let Quizname = globalQuiz[0]['quizname'];
+    let counterDiv = document.getElementById(`counter-div-${Quizname}`);
+    let Counter = document.getElementById(`current-${Quizname}`);
+    let number = globalQuiz[newPosition]['position'];
+
     counterDiv.classList.remove('d-none');
-    counter.innerHTML = number + 1;
+    Counter.innerHTML = number + 1;
+}
+
+
+function hideBarkCounter(Quizname) {
+    if (Quizname = 'history') {
+        document.getElementById(`counter-div-nature`).classList.add('d-none');
+        document.getElementById(`link1`).classList.remove('card-link-active');
+        document.getElementById(`bark1`).classList.remove('card-link-active');
+    }
 }
 
 

@@ -2,14 +2,12 @@
 <html lang="en">
 
 <head>
-
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inconsolata:wght@400;700;800&
         family=Open+Sans:wght@300;400;700&family=PT+Sans:ital,wght@0,400;0,700;1,400;1,700&display=swap"
         rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Rubik:wght@300;400;500;700&display=swap" rel="stylesheet">
-
 
     <script src="script.js"></script>
     <link rel="stylesheet" href="node_modules/bootstrap/dist/css/bootstrap.min.css">
@@ -37,49 +35,59 @@
                     <img src="img/logo.png">
 
                     <div class="card-links">
+
                         <div class="card-links-inner-div">
                             <div class="link-bark" id="bark1"></div><a id="link1" class="hover" href="#">Natur</a>
-                            <div class="counter d-none" id="counter-div"><span
-                                    id="nature-counter"></span><span>/10</span>
+                            <div class="counter d-none" id="counter-div-nature"><span
+                                    id="current-nature"></span><span>/10</span>
                             </div>
                         </div>
+
                         <div class="card-links-inner-div">
                             <div class="link-bark" id="bark2"></div><a id="link2" href="#">CSS</a>
-                            <div id=""></div>
-
+                            <div class="counter d-none" id="counter-div-history"><span
+                                    id="current-history"></span><span>/3</span>
+                            </div>
                         </div>
+
                         <div class="card-links-inner-div">
                             <div class="link-bark" id="bark3"></div><a id="link3" href="#">JS</a>
-                            <div id=""></div>
-
+                            <div class="counter d-none" id="counter-div3"><span id=""></span><span>/10</span>
+                            </div>
                         </div>
+
                         <div class="card-links-inner-div">
                             <div class="link-bark" id="bark4"></div><a id="link4" href="#">Java</a>
-                            <div id=""></div>
+                            <div class="counter d-none" id="counter-div4"><span id=""></span><span>/10</span>
+                            </div>
                         </div>
                     </div>
+
                 </div>
+
                 <div id="card-bg" class="col-md-8 card-right-div rounded-end">
                     <div class="card-body" id="card-body">
                         <h5 class="card-title">Willkommen liebe Quizfreunde!</h5>
                         <p class="card-text">Bist du bereit für die Herausforderung?</p>
                         <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
-                        <button onclick="startQuiz(natureQuiz[0])" type="button"
-                            class="btn btn-warning col-4 button-start">Start
+                        <button onclick="startQuiz()" type="button" class="btn btn-warning col-4 button-start">Start
                             ></button>
-
                     </div>
                 </div>
+
             </div>
 
-        </div>
 
+        </div>
     </div>
 
     <div>
-        <a href="https://www.flaticon.com/free-icons/letter-a" title="letter-a icons">Letter-a icons created by Md
+        <a href="https://www.flaticon.com/free-icons/letter-a" title="letter-a icons">
+            Letter-a icons created
+            by Md
             Tanvirul Haque - Flaticon</a>
     </div>
+
 </body>
 
 </html>
