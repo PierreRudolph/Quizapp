@@ -1,55 +1,109 @@
-let natureQuiz = [{
-    'quizname': 'nature',
+let animalQuiz = [
+    {
+        'quizname': 'Tierwelt',
+        'question':
+            'Welches Tier hat drei Herzen?',
+        'answerA': 'Huhn',
+        'answerB': 'Tintenfisch',
+        'answerC': 'Wal',
+        'answerD': 'Krähe',
+        'solution': 'Tintenfisch',
+        'position': 0
+    },
+    {
+        'question':
+            'Was ist ein Xoloitzcuintle?',
+        'answerA': 'Argentinischer Kampfhahn',
+        'answerB': 'Malaysischer Hirsch',
+        'answerC': 'Mexikanischer Nackthund',
+        'answerD': 'Afrikanischer Steppenvogel',
+        'solution': 'Mexikanischer Nackthund',
+        'position': 1
+
+    },
+    {
+        'question':
+            'Bis zu wieviel Zähne wachsen einem Hai, während seines Lebens?',
+        'answerA': '30.000',
+        'answerB': '10.000',
+        'answerC': '500',
+        'answerD': '34',
+        'solution': '30.000',
+        'position': 2
+
+    },
+    {
+        'question':
+            'Was passiert mit einem Goldfisch wenn man ihn im Dunkeln hält?',
+        'answerA': 'Stirbt',
+        'answerB': 'vermehrt sich',
+        'answerC': 'verliert seine Farbe',
+        'answerD': 'wird Blind',
+        'solution': 'verliert seine Farbe',
+        'position': 3
+
+    },
+    {
+        'question':
+            'Welches am Land lebende Tier hat die größten Augen?',
+        'answerA': 'Strauß',
+        'answerB': 'Elefant',
+        'answerC': 'Deutsche Dogge',
+        'answerD': 'Walross',
+        'solution': 'Strauß',
+        'position': 4
+
+    }];
+
+let historyQuiz = [{
+    'quizname': 'Geschichte',
+    'question': 'Warum warf man in der Schweiz in den 80ern, etwa 52.000 Hühneköpfe aus Helikoptern?',
+    'answerA': 'Seuchenexperimente',
+    'answerB': 'zur rettung des Fuchsbestands',
+    'answerC': 'zum vertreiben von Rehen',
+    'answerD': 'Oralimpfung für Füchse',
+    'solution': 'Oralimpfung für Füchse',
+    'position': 0
+},
+{
+    'question': 'Wie hieß die Hauptstadt von Ostpreußen?',
+    'answerA': 'Lemberg',
+    'answerB': 'Insterburg',
+    'answerC': 'Königsberg',
+    'answerD': 'Warschau',
+    'solution': 'Königsberg',
+    'position': 1
+}, {
+    'question': 'Wann wurde das Deutsche Reich gegründet?',
+    'answerA': '1867',
+    'answerB': '1785',
+    'answerC': '1440',
+    'answerD': '1871',
+    'solution': '1871',
+    'position': 2
+}
+];
+
+let plantsQuiz = [{
+    'quizname': 'Pflanzenwelt',
     'question':
-        'Welches Land wird wegen seiner riesigen Waldfächen, auch als Lunge der Erde bezeichnet?',
-    'answerA': 'China',
-    'answerB': 'Monaco',
-    'answerC': 'Grönland',
-    'answerD': 'Russland',
-    'solution': 'Russland',
+        'Welcher Baum verliert im Winter seine Nadeln?',
+    'answerA': 'Zeder',
+    'answerB': 'Eiche',
+    'answerC': 'Lärche',
+    'answerD': 'Tanne',
+    'solution': 'Lärche',
     'position': 0
 },
 {
     'question':
-        'Welches Tier hat drei Herzen?',
-    'answerA': 'Huhn',
-    'answerB': 'Tintenfisch',
-    'answerC': 'Wal',
-    'answerD': 'Krähe',
-    'solution': 'Tintenfisch',
+        'Was haben Menschen mit Pflanzen gemein?',
+    'answerA': 'Photosynthese',
+    'answerB': 'Schwitzen',
+    'answerC': 'Fieber',
+    'answerD': 'Muskelkater',
+    'solution': 'Fieber',
     'position': 1
-},
-{
-    'question':
-        'Was ist ein Xoloitzcuintle?',
-    'answerA': 'Argentinischer Kampfhahn',
-    'answerB': 'Malaysischer Hirsch',
-    'answerC': 'Mexikanischer Nackthund',
-    'answerD': 'Afrikanischer Steppenvogel',
-    'solution': 'Mexikanischer Nackthund',
-    'position': 2
-
-},
-{
-    'question':
-        'Welches ist das grösste Lebewesen in der Natur?',
-    'answerA': 'Blauwal',
-    'answerB': 'Elefant',
-    'answerC': 'Riesenfaultier',
-    'answerD': 'Armillaria-Honigpilz',
-    'solution': 'Armillaria-Honigpilz',
-    'position': 3
-
-},
-{
-    'question':
-        'Bis zu wieviel Zähne wachsen einem Hai, während seines Lebens?',
-    'answerA': '30.000',
-    'answerB': '10.000',
-    'answerC': '500',
-    'answerD': '34',
-    'solution': '30.000',
-    'position': 4
 
 },
 {
@@ -60,96 +114,60 @@ let natureQuiz = [{
     'answerC': 'Regenwald',
     'answerD': 'Raubkatze',
     'solution': 'Aas',
-    'position': 5
+    'position': 2
 
+}, {
+
+    'question':
+        'Welches Land wird wegen seiner riesigen Waldfächen, auch als Lunge der Erde bezeichnet?',
+    'answerA': 'China',
+    'answerB': 'Monaco',
+    'answerC': 'Grönland',
+    'answerD': 'Russland',
+    'solution': 'Russland',
+    'position': 3
 },
 {
     'question':
-        'Was haben Menschen mit Pflanzen gemein?',
-    'answerA': 'Photosynthese',
-    'answerB': 'Schwitzen',
-    'answerC': 'Fieber',
-    'answerD': 'Muskelkater',
-    'solution': 'Fieber',
-    'position': 6
-
-},
-{
-    'question':
-        'Was passiert mit einem Goldfisch wenn man ihn im Dunkeln hält?',
-    'answerA': 'Stirbt',
-    'answerB': 'vermehrt sich',
-    'answerC': 'verliert seine Farbe',
-    'answerD': 'wird Blind',
-    'solution': 'verliert seine Farbe',
-    'position': 7
-
-},
-{
-    'question':
-        'Welches am Land lebende Tier hat die größten Augen?',
-    'answerA': 'Strauß',
+        'Welches ist das grösste Lebewesen in der Natur?',
+    'answerA': 'Blauwal',
     'answerB': 'Elefant',
-    'answerC': 'Deutsche Dogge',
-    'answerD': 'Walross',
-    'solution': 'Strauß',
-    'position': 8
-
-},
-{
-    'question':
-        'Welcher Baum verliert im Winter seine Nadeln?',
-    'answerA': 'Zeder',
-    'answerB': 'Eiche',
-    'answerC': 'Lärche',
-    'answerD': 'Tanne',
-    'solution': 'Lärche',
-    'position': 9
+    'answerC': 'Riesenfaultier',
+    'answerD': 'Armillaria-Honigpilz',
+    'solution': 'Armillaria-Honigpilz',
+    'position': 4
 
 }];
 
-let historyQuiz = [{
-    'quizname': 'history',
-    'question': 'Warum warf man in der Schweiz in den 80ern, etwa 52.000 Hühneköpfe aus Helikoptern?',
-    'answerA': 'Seuchenexperimente',
-    'answerB': 'zur rettung des Fuchsbestands',
-    'answerC': 'zum vertreiben von Rehen',
-    'answerD': 'Oralimpfung für Füchse',
-    'solution': 'Oralimpfung für Füchse',
-    'position': 0
-},
-{
-    'question': '',
-    'answerA': '',
-    'answerB': '',
-    'answerC': '',
-    'answerD': '',
-    'solution': '',
-    'position': 1
-}, {
-    'question': '',
-    'answerA': '',
-    'answerB': '',
-    'answerC': '',
-    'answerD': '',
-    'solution': '',
-    'position': 2
-}
-]
+let rightAnswer = 0;
 
+function initQuiz(quiz, linkI) {
+    globalThis.cardBody = document.getElementById('card-body');
+    globalThis.globalQuiz = quiz;
+    let intro = `${globalQuiz[0]['quizname']}`
+    showIntro(intro);
+    sidebarLinkActive(linkI);
+}
+
+function showIntro(intro) {
+    cardBody.innerHTML = /*html*/`
+    <h5 class="card-title">Wilkommen zum ausergewöhnlichen ${intro} Quiz!</h5>
+    <p class="card-text">Bist du bereit für die Herausforderung?</p>
+    <button onclick="startQuiz()" type="button" class="btn btn-warning col-4 button-start">
+        Start</button>
+    `;
+}
 
 function startQuiz() {
-    let cardBody = document.getElementById('card-body');
-    globalThis.globalQuiz = natureQuiz;
+
     showCounter(0);
-    sidebarLinkActive(1);
     changeBackground();
     cardBody.innerHTML = getCardinnerHTML(globalQuiz[0]);
 }
 
 
 function newQuiz(globalQuiz) {
-    let cardBody = document.getElementById('card-body');
+
     showCounter(0);
     sidebarLinkActive(2);
     cardBody.innerHTML = getCardinnerHTML(globalQuiz[0]);
@@ -191,6 +209,7 @@ function proofAnswer(position, solution, answer, answerI) {
     let newPosition = position + 1;
 
     if (solution == answer) {
+        rightAnswer++;
         renderRightAnswer(answerI);
         setTimeout(function () { nextQuestion(newPosition) }, 100);
     } else {
@@ -202,46 +221,54 @@ function proofAnswer(position, solution, answer, answerI) {
 
 function nextQuestion(newPosition) {
     let callCounter = 0;
-    let cardBody = document.getElementById('card-body');
 
     if (newPosition < globalQuiz.length) {
+
         showCounter(newPosition);
         cardBody.innerHTML = getCardinnerHTML(globalQuiz[newPosition]);
     } else {
         callCounter + 1;
-        changeCurrentQuiz(callCounter);
+        showResult();
+
     }
 }
 
 
-function changeCurrentQuiz(callCounter) {
-    if (callCounter = 1) {
-        globalThis.globalQuiz = historyQuiz;
-        hideBarkCounter(globalQuiz[0]['quizname']);
-        newQuiz(globalQuiz);
-    } else { }
+function showResult() {
+    let counterDiv = document.getElementById(`counter-div`);
+    counterDiv.classList.add('d-none');
+    cardBody.classList.remove('card-body');
+    cardBody.classList.add('result-card-body');
+
+    cardBody.innerHTML =/*html*/`
+    
+    <img class="result-img" src="img/brain result.png">
+        <div class="result-headline" ><span>TIERE QUIZ VOLLENDET</span></div>
+        
+        <div>
+            <span>YOUR SCORE</span> 
+            <span id="result">${rightAnswer}</span> <span id="quiz-length">/${globalQuiz.length}</span>
+        </div> 
+        
+        <div class="share-replay-btn">
+            <button type="button" class="btn btn-primary">SHARE</button>
+            <button type="button" class="btn btn-outline-primary transparent-btn-replay">REPLAY</button>
+        
+        </div>
+    `;
 }
 
-
-/*function getCurrentQuizName(i) {
-    let i = 0;
-    if (globalQuiz['quizname'] = 'nature') {
-        i = 1;
-    } if (globalQuiz['quizname'] = 'history') {
-        i = 2;
-    }
-    return i;
-}*/
 
 
 function showCounter(newPosition) {
-    let Quizname = globalQuiz[0]['quizname'];
-    let counterDiv = document.getElementById(`counter-div-${Quizname}`);
-    let Counter = document.getElementById(`current-${Quizname}`);
-    let number = globalQuiz[newPosition]['position'];
 
+    let counterDiv = document.getElementById(`counter-div`);
+    let Counter = document.getElementById(`current`);
+    let number = globalQuiz[newPosition]['position'];
+    let quizLength = document.getElementById('quizlength')
     counterDiv.classList.remove('d-none');
     Counter.innerHTML = number + 1;
+    quizLength.innerHTML = globalQuiz.length;
 }
 
 
@@ -271,6 +298,7 @@ function renderWrongAnswer(i) {
 
 
 function sidebarLinkActive(position) {
+    sidebarLinkDisable();
     let posLink = 'link' + position;
     let posBark = 'bark' + position;
 
@@ -279,6 +307,17 @@ function sidebarLinkActive(position) {
 
     bark.classList.add('card-link-active');
     link.classList.add('card-link-active');
+}
+
+
+function sidebarLinkDisable() {
+    for (let i = 1; i < 5; i++) {
+        let link = document.getElementById(`link${i}`);
+        let bark = document.getElementById(`bark${i}`);
+        link.classList.remove('card-link-active');
+        bark.classList.remove('card-link-active');
+    }
+
 }
 
 

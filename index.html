@@ -18,7 +18,7 @@
     <title>Quizapp</title>
 </head>
 
-<body>
+<body onload="initQuiz(animalQuiz,1)">
 
     <nav class="navbar bg-light">
         <div class="container-fluid">
@@ -37,29 +37,34 @@
                     <div class="card-links">
 
                         <div class="card-links-inner-div">
-                            <div class="link-bark" id="bark1"></div><a id="link1" class="hover" href="#">Natur</a>
-                            <div class="counter d-none" id="counter-div-nature"><span
-                                    id="current-nature"></span><span>/10</span>
-                            </div>
+                            <div class="link-bark" id="bark1"></div><a onclick="initQuiz(animalQuiz,1)" id="link1"
+                                class="hover" href="#">Tiere</a>
+
                         </div>
 
                         <div class="card-links-inner-div">
-                            <div class="link-bark" id="bark2"></div><a id="link2" href="#">CSS</a>
-                            <div class="counter d-none" id="counter-div-history"><span
-                                    id="current-history"></span><span>/3</span>
-                            </div>
+                            <div class="link-bark" id="bark2"></div><a onclick="initQuiz(historyQuiz,2)" id="link2"
+                                href="#">Geschich..</a>
+
                         </div>
 
                         <div class="card-links-inner-div">
-                            <div class="link-bark" id="bark3"></div><a id="link3" href="#">JS</a>
-                            <div class="counter d-none" id="counter-div3"><span id=""></span><span>/10</span>
-                            </div>
+                            <div class="link-bark" id="bark3"></div><a onclick="initQuiz(plantsQuiz,3)" id="link3"
+                                href="#">Pflanzen</a>
+
                         </div>
 
                         <div class="card-links-inner-div">
-                            <div class="link-bark" id="bark4"></div><a id="link4" href="#">Java</a>
-                            <div class="counter d-none" id="counter-div4"><span id=""></span><span>/10</span>
-                            </div>
+                            <div class="link-bark" id="bark4"></div><a onclick="initQuiz()" id="link4" href="#">Java</a>
+
+                        </div>
+                    </div>
+
+                    <div class="counter d-none" id="counter-div">
+                        <span>Frage:</span>
+                        <div><span id="current"></span>
+                            <span>von</span>
+                            <span id="quizlength"></span>
                         </div>
                     </div>
 
@@ -67,9 +72,9 @@
 
                 <div id="card-bg" class="col-md-8 card-right-div rounded-end">
                     <div class="card-body" id="card-body">
-                        <h5 class="card-title">Willkommen liebe Quizfreunde!</h5>
+                        <h5 class="card-title" id="intro"></h5>
+
                         <p class="card-text">Bist du bereit für die Herausforderung?</p>
-                        <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
                         <button onclick="startQuiz()" type="button" class="btn btn-warning col-4 button-start">Start
                             ></button>
                     </div>
