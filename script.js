@@ -144,37 +144,39 @@ let rightAnswer = 0;
 function initQuiz(quiz, linkI) {
     globalThis.cardBody = document.getElementById('card-body');
     globalThis.globalQuiz = quiz;
-    let intro = `${globalQuiz[0]['quizname']}`
-    showIntro(intro);
-    sidebarLinkActive(linkI);
+
+    cardBody.classList.remove('result-card-body');
+    cardBody.classList.add('card-body');
+
+    let intro = globalQuiz[0]['quizname'];
+    showIntro(intro, linkI);
+    deActivateSidebarLinks();
+    activateSidebarLink(linkI);
+    changeBackground(0);
+
 }
 
-function showIntro(intro) {
+
+function showIntro(intro, linkI) {
     cardBody.innerHTML = /*html*/`
     <h5 class="card-title">Wilkommen zum ausergewöhnlichen ${intro} Quiz!</h5>
     <p class="card-text">Bist du bereit für die Herausforderung?</p>
-    <button onclick="startQuiz()" type="button" class="btn btn-warning col-4 button-start">
+    <button onclick="startQuiz(${linkI})" type="button" class="btn btn-warning col-4 button-start">
         Start</button>
     `;
 }
 
-function startQuiz() {
 
+function startQuiz(linkI) {
+    sidebarLinksPointerNone();
+    activateSidebarLink(linkI);
     showCounter(0);
-    changeBackground();
-    cardBody.innerHTML = getCardinnerHTML(globalQuiz[0]);
+    changeBackground(1);
+    cardBody.innerHTML = getCardinnerHTMLQuiz(globalQuiz[0]);
 }
 
 
-function newQuiz(globalQuiz) {
-
-    showCounter(0);
-    sidebarLinkActive(2);
-    cardBody.innerHTML = getCardinnerHTML(globalQuiz[0]);
-}
-
-
-function getCardinnerHTML(currentQuiz) {
+function getCardinnerHTMLQuiz(currentQuiz) {
     return /*html*/ `
     <span>${currentQuiz['question']}</span>
 
@@ -220,64 +222,57 @@ function proofAnswer(position, solution, answer, answerI) {
 
 
 function nextQuestion(newPosition) {
-    let callCounter = 0;
-
     if (newPosition < globalQuiz.length) {
-
         showCounter(newPosition);
         cardBody.innerHTML = getCardinnerHTML(globalQuiz[newPosition]);
     } else {
-        callCounter + 1;
         showResult();
-
     }
 }
 
 
 function showResult() {
+    activateSidebarLinks();
     let counterDiv = document.getElementById(`counter-div`);
     counterDiv.classList.add('d-none');
+
     cardBody.classList.remove('card-body');
     cardBody.classList.add('result-card-body');
 
-    cardBody.innerHTML =/*html*/`
+    cardBody.innerHTML = getCardinnerHTMLResult();
+}
+
+
+function getCardinnerHTMLResult() {
+    return /*html*/`
     
     <img class="result-img" src="img/brain result.png">
-        <div class="result-headline" ><span>TIERE QUIZ VOLLENDET</span></div>
+        <div class="result-headline" ><span>${globalQuiz[0]['quizname']} Quiz Vollendet</span></div>
         
         <div>
-            <span>YOUR SCORE</span> 
-            <span id="result">${rightAnswer}</span> <span id="quiz-length">/${globalQuiz.length}</span>
+            <span>Richtige Fragen:</span> 
+            <span id="result">${rightAnswer}</span> <span id="quiz-length">von ${globalQuiz.length}</span>
         </div> 
         
         <div class="share-replay-btn">
-            <button type="button" class="btn btn-primary">SHARE</button>
-            <button type="button" class="btn btn-outline-primary transparent-btn-replay">REPLAY</button>
-        
+            <button type="button" class="btn btn-primary">TEILEN</button>
+            <button type="button" 
+            class="btn btn-outline-primary transparent-btn-replay" onclick="initQuiz(globalQuiz,1)">
+            WIEDERHOLEN</button>
         </div>
     `;
 }
 
 
-
 function showCounter(newPosition) {
-
     let counterDiv = document.getElementById(`counter-div`);
     let Counter = document.getElementById(`current`);
     let number = globalQuiz[newPosition]['position'];
     let quizLength = document.getElementById('quizlength')
+
     counterDiv.classList.remove('d-none');
     Counter.innerHTML = number + 1;
     quizLength.innerHTML = globalQuiz.length;
-}
-
-
-function hideBarkCounter(Quizname) {
-    if (Quizname = 'history') {
-        document.getElementById(`counter-div-nature`).classList.add('d-none');
-        document.getElementById(`link1`).classList.remove('card-link-active');
-        document.getElementById(`bark1`).classList.remove('card-link-active');
-    }
 }
 
 
@@ -297,8 +292,7 @@ function renderWrongAnswer(i) {
 }
 
 
-function sidebarLinkActive(position) {
-    sidebarLinkDisable();
+function activateSidebarLink(position) {
     let posLink = 'link' + position;
     let posBark = 'bark' + position;
 
@@ -307,21 +301,43 @@ function sidebarLinkActive(position) {
 
     bark.classList.add('card-link-active');
     link.classList.add('card-link-active');
+
+
 }
 
 
-function sidebarLinkDisable() {
+function activateSidebarLinks() {
+    for (let i = 1; i < 5; i++) {
+        let link = document.getElementById(`link${i}`);
+        link.classList.remove('pointer-events-none');
+    }
+}
+
+
+function deActivateSidebarLinks() {
     for (let i = 1; i < 5; i++) {
         let link = document.getElementById(`link${i}`);
         let bark = document.getElementById(`bark${i}`);
         link.classList.remove('card-link-active');
         bark.classList.remove('card-link-active');
     }
-
 }
 
 
-function changeBackground() {
+function sidebarLinksPointerNone() {
+    for (let i = 1; i < 5; i++) {
+        let link = document.getElementById(`link${i}`);
+        link.classList.add('pointer-events-none');
+    }
+}
+
+
+function changeBackground(hideBrain) {
     let cardBg = document.getElementById('card-bg');
-    cardBg.classList.add('card-bg');
+
+    if (hideBrain == 1) {
+        cardBg.classList.add('card-bg');
+    } else {
+        cardBg.classList.remove('card-bg');
+    }
 }

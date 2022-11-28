@@ -234,3 +234,7 @@ body {
 .d-none {
     display: none;
 }
+
+.pointer-events-none {
+    pointer-events: none;
+}
