@@ -141,37 +141,45 @@ let plantsQuiz = [{
 
 let rightAnswer = 0;
 
+
 function initQuiz(quiz, linkI) {
+    clearProgressBar()
+
     globalThis.cardBody = document.getElementById('card-body');
     globalThis.globalQuiz = quiz;
-
+    rightAnswer = 0
     cardBody.classList.remove('result-card-body');
     cardBody.classList.add('card-body');
 
     let intro = globalQuiz[0]['quizname'];
-    showIntro(intro, linkI);
+    showIntro(intro);
     deActivateSidebarLinks();
     activateSidebarLink(linkI);
     changeBackground(0);
-
+    showTropy();
 }
 
 
-function showIntro(intro, linkI) {
+function showIntro(intro) {
     cardBody.innerHTML = /*html*/`
     <h5 class="card-title">Wilkommen zum ausergewöhnlichen ${intro} Quiz!</h5>
     <p class="card-text">Bist du bereit für die Herausforderung?</p>
-    <button onclick="startQuiz(${linkI})" type="button" class="btn btn-warning col-4 button-start">
+    <button onclick="startQuiz()" type="button" class="btn btn-warning col-4 button-start">
         Start</button>
     `;
 }
 
 
-function startQuiz(linkI) {
+function startQuiz() {
+    clearProgressBar()
+
+    rightAnswer = 0
     sidebarLinksPointerNone();
-    activateSidebarLink(linkI);
     showCounter(0);
     changeBackground(1);
+    showTropy();
+    cardBody.classList.remove('result-card-body');
+    cardBody.classList.add('card-body');
     cardBody.innerHTML = getCardinnerHTMLQuiz(globalQuiz[0]);
 }
 
@@ -213,8 +221,10 @@ function proofAnswer(position, solution, answer, answerI) {
     if (solution == answer) {
         rightAnswer++;
         renderRightAnswer(answerI);
+        showProgressBar('bg-success');
         setTimeout(function () { nextQuestion(newPosition) }, 100);
     } else {
+        showProgressBar('bg-danger');
         renderWrongAnswer(answerI)
         setTimeout(function () { nextQuestion(newPosition) }, 100);
     }
@@ -224,7 +234,7 @@ function proofAnswer(position, solution, answer, answerI) {
 function nextQuestion(newPosition) {
     if (newPosition < globalQuiz.length) {
         showCounter(newPosition);
-        cardBody.innerHTML = getCardinnerHTML(globalQuiz[newPosition]);
+        cardBody.innerHTML = getCardinnerHTMLQuiz(globalQuiz[newPosition]);
     } else {
         showResult();
     }
@@ -232,6 +242,7 @@ function nextQuestion(newPosition) {
 
 
 function showResult() {
+    showTropy();
     activateSidebarLinks();
     let counterDiv = document.getElementById(`counter-div`);
     counterDiv.classList.add('d-none');
@@ -257,7 +268,7 @@ function getCardinnerHTMLResult() {
         <div class="share-replay-btn">
             <button type="button" class="btn btn-primary">TEILEN</button>
             <button type="button" 
-            class="btn btn-outline-primary transparent-btn-replay" onclick="initQuiz(globalQuiz,1)">
+            class="btn btn-outline-primary transparent-btn-replay" onclick="startQuiz(globalQuiz)">
             WIEDERHOLEN</button>
         </div>
     `;
@@ -340,4 +351,31 @@ function changeBackground(hideBrain) {
     } else {
         cardBg.classList.remove('card-bg');
     }
+}
+
+
+function showTropy() {
+    let tropydiv = document.getElementById('tropy-div');
+    if (rightAnswer == globalQuiz.length) {
+        tropydiv.classList.remove('d-none');
+    } else {
+        tropydiv.classList.add('d-none');
+    }
+}
+
+
+function showProgressBar(trueFalse) {
+    let bar = document.getElementById('bar-div');
+    let width = 100 / globalQuiz.length;
+
+    bar.innerHTML +=/*html*/`
+    <div class="progress-bar ${trueFalse} border-end" role="progressbar"  style="width: ${width}%">
+        </div>
+        `;
+}
+
+
+function clearProgressBar() {
+    let bar = document.getElementById('bar-div');
+    bar.innerHTML = '';
 }
