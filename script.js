@@ -165,7 +165,7 @@ function showIntro(intro) {
     <h5 class="card-title">Wilkommen zum ausergewöhnlichen ${intro} Quiz!</h5>
     <p class="card-text">Bist du bereit für die Herausforderung?</p>
     <button onclick="startQuiz()" type="button" class="btn btn-warning col-4 button-start">
-        Start</button>
+        START<img class="start-btn-arrow" src="img/arrow-right.png"></button>
     `;
 }
 
@@ -222,11 +222,11 @@ function proofAnswer(position, solution, answer, answerI) {
         rightAnswer++;
         renderRightAnswer(answerI);
         showProgressBar('bg-success');
-        setTimeout(function () { nextQuestion(newPosition) }, 100);
+        setTimeout(function () { nextQuestion(newPosition) }, 225);
     } else {
         showProgressBar('bg-danger');
         renderWrongAnswer(answerI)
-        setTimeout(function () { nextQuestion(newPosition) }, 100);
+        setTimeout(function () { nextQuestion(newPosition) }, 225);
     }
 }
 
@@ -261,8 +261,8 @@ function getCardinnerHTMLResult() {
         <div class="result-headline" ><span>${globalQuiz[0]['quizname']} Quiz Vollendet</span></div>
         
         <div>
-            <span>Richtige Fragen:</span> 
-            <span id="result">${rightAnswer}</span> <span id="quiz-length">von ${globalQuiz.length}</span>
+            <span class="result-text">Richtige Fragen:</span> 
+            <span id="result" class="result">${rightAnswer}</span> <span class="result" id="quiz-length">von ${globalQuiz.length}</span>
         </div> 
         
         <div class="share-replay-btn">
