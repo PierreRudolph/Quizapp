@@ -1,5 +1,10 @@
-body {
+.all-content {
     background-color: #FDF9EE;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    justify-content: space-between;
 }
 
 .main-container {
@@ -7,14 +12,20 @@ body {
     justify-content: center;
     align-items: center;
     height: 90vh;
+    z-index: 1;
 }
 
 .mb-3 {
     margin-bottom: 0rem !important;
 }
 
+.card {
+    width: 600px;
+    height: 350px;
+}
+
 .inner-card {
-    height: 320px;
+    height: inherit;
 }
 
 .sidebar-card {
@@ -35,7 +46,6 @@ body {
     text-decoration: none;
     font-family: 'RUBIK', sans-serif;
     margin-left: 20px;
-
 }
 
 .card-links {
@@ -50,7 +60,6 @@ body {
 .card-links-inner-div {
     display: flex;
     align-items: center;
-
 }
 
 .card-link-active {
@@ -82,10 +91,9 @@ body {
     justify-content: center;
     text-align: center;
     flex: 1;
-
 }
 
-.card-bg {
+.card-bg-white {
     background-image: none !important;
     background-color: #F6F6F6 !important;
 }
@@ -107,12 +115,7 @@ body {
     flex-direction: column;
     justify-content: space-evenly;
     align-items: center;
-
 }
-
-
-
-
 
 .transparent-btn-replay {
     border: none;
@@ -121,8 +124,6 @@ body {
 .transparent-btn-replay:hover {
     background-color: #ffffff42;
     color: #0d6efd;
-
-
 }
 
 .card-body span:nth-child(1) {
@@ -268,12 +269,124 @@ body {
 }
 
 .tropy {
-
     transition: ease-in-out;
     width: 100px;
     position: absolute;
     right: 0px;
     top: 38vh;
+}
+
+.options {
+    position: absolute;
+    right: 5px;
+    top: 5px;
+    height: 25px !important;
+}
+
+.options:hover {
+    transform: rotate(45deg) scale(1.2);
+    transition: all 225ms ease-in-out
+}
+
+.options:active {
+    transform: rotate(90deg) scale(1);
+    transition: all 225ms ease-in-out
+}
+
+.hidden-options {
+    background-color: #F6F6F6;
+    height: 60px;
+    width: 180px;
+    position: absolute;
+    top: 0px;
+    right: 0px;
+    border: 1px solid rgb(211, 211, 211);
+    border-bottom: none;
+    border-top-left-radius: 20%;
+    border-top-right-radius: 20%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-evenly;
+    z-index: -1;
+}
+
+.hidden-options span {
+    font-size: 12px;
+}
+
+.show-options {
+    transform: translateY(-61px);
+    transition: all 225ms ease-out;
+}
+
+.hide-options {
+    transform: translateY(0px);
+    transition: all 225ms ease-in;
+
+}
+
+/* The switch - the box around the slider */
+.switch {
+    position: relative;
+    display: inline-block;
+    width: 40px;
+    height: 15px;
+}
+
+/* Hide default HTML checkbox */
+.switch input {
+    opacity: 0;
+    width: 0;
+    height: 0;
+}
+
+/* The slider */
+.slider {
+    position: absolute;
+    cursor: pointer;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: #ccc;
+    -webkit-transition: .4s;
+    transition: .4s;
+}
+
+.slider:before {
+    position: absolute;
+    content: "";
+    height: 9px;
+    width: 9px;
+    left: 3px;
+    bottom: 3px;
+    background-color: white;
+    -webkit-transition: .4s;
+    transition: .4s;
+}
+
+input:checked+.slider {
+    background-color: #2196F3;
+}
+
+input:focus+.slider {
+    box-shadow: 0 0 1px #2196F3;
+}
+
+input:checked+.slider:before {
+    -webkit-transform: translateX(24px);
+    -ms-transform: translateX(24px);
+    transform: translateX(24px);
+}
+
+/* Rounded sliders */
+.slider.round {
+    border-radius: 34px;
+}
+
+.slider.round:before {
+    border-radius: 50%;
 }
 
 .d-none {
@@ -284,27 +397,47 @@ body {
     pointer-events: none;
 }
 
-.navbar {
-    /*Footer*/
-    position: fixed;
-    bottom: 10px;
-    border-top-right-radius: 40%;
-}
+@media(max-width:660px) {
 
-.navbar a {
-    font-size: 15px;
-}
+    .sidebar-card img {
+        height: 3em;
+    }
 
-@media(max-width:360px) {
-    .card {
-        max-height: 390px;
+    .sidebar-card a {
+        font-size: 0.9em !important;
+    }
+
+    .card-title {
+        font-size: 1.1em;
+    }
+
+    .card-text {
+        font-size: 1em;
+    }
+
+    .button-start {
+        font-size: 1em !important;
+        right: 1em;
+        bottom: 1em;
+        width: 25%;
+        padding-top: 0.3em;
+        padding-bottom: 0.3em;
+    }
+
+    .start-btn-arrow {
+        top: 0.4em;
     }
 
     .card-body {
         max-height: 390px;
     }
 
+    .card-body span:nth-child(1) {
+        font-size: 1em;
+    }
+
     .question-link {
+        font-size: 1em;
         text-align: start;
         padding-left: 3em;
     }
@@ -313,4 +446,32 @@ body {
         margin-left: 0em;
     }
 
+}
+
+@media(max-width:600px) {
+    .card {
+        width: 30em;
+    }
+}
+
+@media(max-width:560px) {
+    .card {
+        width: 27em;
+    }
+}
+
+@media(max-width:460px) {
+    .card {
+        width: 25em;
+    }
+
+    .question-link {
+        font-size: 0.8em;
+        padding-left: 4em;
+    }
+
+    .start-btn-arrow {
+        height: 1em !important;
+        top: 0.6em;
+    }
 }

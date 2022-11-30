@@ -139,24 +139,32 @@ let plantsQuiz = [{
 
 }];
 
+let spaceQuiz = [{
+    'quizname': 'Weltall',
+    'question':
+        'Welcher Berg ist der höchste in unserem Sonnensystem?',
+    'answerA': 'Mount Everest',
+    'answerB': 'iii',
+    'answerC': 'Zuckerberg in meinem Kaffee',
+    'answerD': 'Olympus Moons',
+    'solution': 'Olympus Moons',
+    'position': 0
+},];
+
 let rightAnswer = 0;
+let optionsVisible = 0;
 
 
 function initQuiz(quiz, linkI) {
-    clearProgressBar()
-
-    globalThis.cardBody = document.getElementById('card-body');
     globalThis.globalQuiz = quiz;
-    rightAnswer = 0
-    cardBody.classList.remove('result-card-body');
-    cardBody.classList.add('card-body');
-
+    globalThis.cardBody = document.getElementById('card-body');
     let intro = globalQuiz[0]['quizname'];
+    updateCardBody(0)
+    updateQuiz();
+
     showIntro(intro);
     deActivateSidebarLinks();
     activateSidebarLink(linkI);
-    changeBackground(0);
-    showTropy();
 }
 
 
@@ -171,15 +179,10 @@ function showIntro(intro) {
 
 
 function startQuiz() {
-    clearProgressBar()
-
-    rightAnswer = 0
+    updateQuiz()
     sidebarLinksPointerNone();
     showCounter(0);
-    changeBackground(1);
-    showTropy();
-    cardBody.classList.remove('result-card-body');
-    cardBody.classList.add('card-body');
+    updateCardBody(1)
     cardBody.innerHTML = getCardinnerHTMLQuiz(globalQuiz[0]);
 }
 
@@ -221,17 +224,17 @@ function proofAnswer(position, solution, answer, answerI) {
     if (solution == answer) {
         rightAnswer++;
         renderRightAnswer(answerI);
-        showProgressBar('bg-success');
-        setTimeout(function () { nextQuestion(newPosition) }, 225);
+        updateProgressBar('bg-success');
+        setTimeout(function () { getNextQuestion(newPosition) }, 225);
     } else {
-        showProgressBar('bg-danger');
         renderWrongAnswer(answerI)
-        setTimeout(function () { nextQuestion(newPosition) }, 225);
+        updateProgressBar('bg-danger');
+        setTimeout(function () { getNextQuestion(newPosition) }, 225);
     }
 }
 
 
-function nextQuestion(newPosition) {
+function getNextQuestion(newPosition) {
     if (newPosition < globalQuiz.length) {
         showCounter(newPosition);
         cardBody.innerHTML = getCardinnerHTMLQuiz(globalQuiz[newPosition]);
@@ -242,7 +245,7 @@ function nextQuestion(newPosition) {
 
 
 function showResult() {
-    showTropy();
+    showHideTropy();
     activateSidebarLinks();
     let counterDiv = document.getElementById(`counter-div`);
     counterDiv.classList.add('d-none');
@@ -258,7 +261,9 @@ function getCardinnerHTMLResult() {
     return /*html*/`
     
     <img class="result-img" src="img/brain result.png">
-        <div class="result-headline" ><span>${globalQuiz[0]['quizname']} Quiz Vollendet</span></div>
+        <div class="result-headline" >
+            <span>${globalQuiz[0]['quizname']} Quiz Vollendet</span>
+        </div>
         
         <div>
             <span class="result-text">Richtige Fragen:</span> 
@@ -275,6 +280,24 @@ function getCardinnerHTMLResult() {
 }
 
 
+function showOptions() {
+    let options = document.getElementById('option-div');
+
+    if (optionsVisible == 1) {
+        options.classList.add('hide-options');
+        options.classList.remove('show-options');
+    }
+    if (optionsVisible == 0) {
+        options.classList.add('show-options');
+        options.classList.remove('hide-options');
+    }
+
+    if (options.classList.contains('show-options')) {
+        optionsVisible++;
+    } else { optionsVisible--; }
+}
+
+
 function showCounter(newPosition) {
     let counterDiv = document.getElementById(`counter-div`);
     let Counter = document.getElementById(`current`);
@@ -284,6 +307,19 @@ function showCounter(newPosition) {
     counterDiv.classList.remove('d-none');
     Counter.innerHTML = number + 1;
     quizLength.innerHTML = globalQuiz.length;
+}
+
+
+function updateCardBody(i) {
+    changeCardBg(i);
+    cardBody.classList.remove('result-card-body');
+    cardBody.classList.add('card-body');
+}
+
+function updateQuiz() {
+    rightAnswer = 0;
+    clearProgressBar();
+    showHideTropy();
 }
 
 
@@ -312,8 +348,6 @@ function activateSidebarLink(position) {
 
     bark.classList.add('card-link-active');
     link.classList.add('card-link-active');
-
-
 }
 
 
@@ -343,18 +377,18 @@ function sidebarLinksPointerNone() {
 }
 
 
-function changeBackground(hideBrain) {
+function changeCardBg(hideBrain) {
     let cardBg = document.getElementById('card-bg');
 
     if (hideBrain == 1) {
-        cardBg.classList.add('card-bg');
+        cardBg.classList.add('card-bg-white');
     } else {
-        cardBg.classList.remove('card-bg');
+        cardBg.classList.remove('card-bg-white');
     }
 }
 
 
-function showTropy() {
+function showHideTropy() {
     let tropydiv = document.getElementById('tropy-div');
     if (rightAnswer == globalQuiz.length) {
         tropydiv.classList.remove('d-none');
@@ -364,7 +398,7 @@ function showTropy() {
 }
 
 
-function showProgressBar(trueFalse) {
+function updateProgressBar(trueFalse) {
     let bar = document.getElementById('bar-div');
     let width = 100 / globalQuiz.length;
 

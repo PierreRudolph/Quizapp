@@ -28,6 +28,7 @@
     <meta name="msapplication-TileImage" content="img/favicon/ms-icon-144x144.png">
     <meta name="theme-color" content="#ffffff">
 
+    <script src="https://unpkg.com/@popperjs/core@2"></script>
     <script src="script.js"></script>
     <link rel="stylesheet" href="node_modules/bootstrap/dist/css/bootstrap.min.css">
     <link rel="stylesheet" href="style.css">
@@ -39,78 +40,106 @@
 
 <body onload="initQuiz(animalQuiz,1)">
 
-    <div id="bar-div" class="progress"></div>
+    <div class="all-content">
 
-    <div class="main-container">
+        <div id="bar-div" class="progress"></div>
+
+        <div class="main-container">
 
 
-        <div class="card mb-3" style="width: 550px;">
-            <div class="row g-0 inner-card">
-                <div class="col-md-4  sidebar-card rounded-start">
-                    <img src="img/logo.png">
+            <div class="card mb-3">
+                <div class="row g-0 inner-card">
+                    <div class="col-md-4  sidebar-card rounded-start">
+                        <img src="img/logo.png">
 
-                    <div class="card-links">
+                        <div class="card-links">
 
-                        <div class="card-links-inner-div">
-                            <div class="link-bark" id="bark1"></div><a onclick="initQuiz(animalQuiz,1)" id="link1"
-                                href="#">Tierwelt</a>
+                            <div class="card-links-inner-div">
+                                <div class="link-bark" id="bark1"></div><a onclick="initQuiz(animalQuiz,1)" id="link1"
+                                    href="#">Tierwelt</a>
 
+                            </div>
+
+                            <div class="card-links-inner-div">
+                                <div class="link-bark" id="bark2"></div><a onclick="initQuiz(historyQuiz,2)" id="link2"
+                                    href="#">Geschichte</a>
+
+                            </div>
+
+                            <div class="card-links-inner-div">
+                                <div class="link-bark" id="bark3"></div><a onclick="initQuiz(plantsQuiz,3)" id="link3"
+                                    href="#">Pflanzen</a>
+
+                            </div>
+
+                            <div class="card-links-inner-div">
+                                <div class="link-bark" id="bark4"></div><a onclick="initQuiz(spaceQuiz,4)" id="link4"
+                                    href="#">Weltall</a>
+
+                            </div>
                         </div>
 
-                        <div class="card-links-inner-div">
-                            <div class="link-bark" id="bark2"></div><a onclick="initQuiz(historyQuiz,2)" id="link2"
-                                href="#">Geschichte</a>
-
+                        <div class="counter d-none" id="counter-div">
+                            <span>Frage:</span>
+                            <div><span id="current"></span>
+                                <span>von</span>
+                                <span id="quizlength"></span>
+                            </div>
                         </div>
 
-                        <div class="card-links-inner-div">
-                            <div class="link-bark" id="bark3"></div><a onclick="initQuiz(plantsQuiz,3)" id="link3"
-                                href="#">Pflanzen</a>
-
-                        </div>
-
-                        <div class="card-links-inner-div">
-                            <div class="link-bark" id="bark4"></div><a onclick="initQuiz()" id="link4" href="#">Java</a>
-
-                        </div>
                     </div>
 
-                    <div class="counter d-none" id="counter-div">
-                        <span>Frage:</span>
-                        <div><span id="current"></span>
-                            <span>von</span>
-                            <span id="quizlength"></span>
+                    <div id="card-bg" class="col-md-8 card-right-div rounded-end">
+                        <div id="option-div" class="hidden-options hide-options">
+                            <span>Richtige Fragen anzeigen?</span>
+
+
+                            <label class="switch">
+                                <input type="checkbox">
+                                <span class="slider round"></span>
+                            </label>
+                        </div>
+                        <img onclick="showOptions()" class="options" src="img/cog.png">
+
+
+                        <div class="card-body" id="card-body">
+                            <h5 class="card-title" id="intro"></h5>
+
+                            <p class="card-text">Bist du bereit für die Herausforderung?</p>
+                            <button onclick="startQuiz()" type="button" class="btn btn-warning col-4 button-start">Start
+                                ></button>
                         </div>
                     </div>
 
                 </div>
 
-                <div id="card-bg" class="col-md-8 card-right-div rounded-end">
-                    <div class="card-body" id="card-body">
-                        <h5 class="card-title" id="intro"></h5>
-
-                        <p class="card-text">Bist du bereit für die Herausforderung?</p>
-                        <button onclick="startQuiz()" type="button" class="btn btn-warning col-4 button-start">Start
-                            ></button>
-                    </div>
-                </div>
 
             </div>
 
+            <div id="tropy-div" class="d-none"><img class="tropy" src="img/tropy.png"></div>
 
         </div>
 
-        <div id="tropy-div" class="d-none"><img class="tropy" src="img/tropy.png"></div>
+        <div class="container">
+            <footer class="d-flex flex-wrap justify-content-between align-items-center my-4 border-top">
+                <p class="col-md-4 mb-0 text-muted">&copy; 2022 Pierre Lettner</p>
+
+                <ul class="nav col-md-4 justify-content-end">
+                    <li class="nav-item"><a href="https://www.flaticon.com/free-icons/brain"
+                            class="nav-link px-2 text-muted">Brain
+                            icon
+                            created by Freepik -
+                            Flaticon</a></li>
+                    <li class="nav-item"><a href="https://www.flaticon.com/free-icons/cog"
+                            class="nav-link px-2 text-muted">Cog icons
+                            created
+                            by juicy_fish -
+                            Flaticon</a></li>
+                </ul>
+            </footer>
+        </div>
 
     </div>
-
-    <nav class="navbar bg-light">
-        <div class="container-fluid">
-            <a class="navbar-brand" title="brain icons" href="https://www.flaticon.com/free-icons/brain">Brain icon
-                created by Freepik -
-                Flaticon</a>
-        </div>
-    </nav>
 
 </body>
 
