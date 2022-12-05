@@ -1,176 +1,207 @@
 let animalQuiz = [
     {
         'quizname': 'Tierwelt',
-        'question':
-            'Welches Tier hat drei Herzen?',
+        'question': 'Welches Tier hat drei Herzen?',
         'answerA': 'Huhn',
         'answerB': 'Tintenfisch',
         'answerC': 'Wal',
         'answerD': 'Krähe',
         'solution': 'Tintenfisch',
-        'position': 0
+        'position': 0,
+        'rightAnswerId': 2
     },
     {
-        'question':
-            'Was ist ein Xoloitzcuintle?',
+        'question': 'Was ist ein Xoloitzcuintle?',
         'answerA': 'Argentinischer Kampfhahn',
         'answerB': 'Malaysischer Hirsch',
         'answerC': 'Mexikanischer Nackthund',
         'answerD': 'Afrikanischer Steppenvogel',
         'solution': 'Mexikanischer Nackthund',
-        'position': 1
-
+        'position': 1,
+        'rightAnswerId': 3
     },
     {
-        'question':
-            'Bis zu wieviel Zähne wachsen einem Hai, während seines Lebens?',
+        'question': 'Bis zu wieviel Zähne wachsen einem Hai, während seines Lebens?',
         'answerA': '30.000',
         'answerB': '10.000',
         'answerC': '500',
         'answerD': '34',
         'solution': '30.000',
-        'position': 2
-
+        'position': 2,
+        'rightAnswerId': 1
     },
     {
-        'question':
-            'Was passiert mit einem Goldfisch wenn man ihn im Dunkeln hält?',
+        'question': 'Was passiert mit einem Goldfisch wenn man ihn im Dunkeln hält?',
         'answerA': 'Stirbt',
         'answerB': 'vermehrt sich',
         'answerC': 'verliert seine Farbe',
         'answerD': 'wird Blind',
         'solution': 'verliert seine Farbe',
-        'position': 3
-
+        'position': 3,
+        'rightAnswerId': 3
     },
     {
-        'question':
-            'Welches am Land lebende Tier hat die größten Augen?',
+        'question': 'Welches am Land lebende Tier hat die größten Augen?',
         'answerA': 'Strauß',
         'answerB': 'Elefant',
         'answerC': 'Deutsche Dogge',
         'answerD': 'Walross',
         'solution': 'Strauß',
-        'position': 4
-
-    }];
-
-let historyQuiz = [{
-    'quizname': 'Geschichte',
-    'question': 'Warum warf man in der Schweiz in den 80ern, etwa 52.000 Hühneköpfe aus Helikoptern?',
-    'answerA': 'Seuchenexperimente',
-    'answerB': 'zur rettung des Fuchsbestands',
-    'answerC': 'zum vertreiben von Rehen',
-    'answerD': 'Oralimpfung für Füchse',
-    'solution': 'Oralimpfung für Füchse',
-    'position': 0
-},
-{
-    'question': 'Wie hieß die Hauptstadt von Ostpreußen?',
-    'answerA': 'Lemberg',
-    'answerB': 'Insterburg',
-    'answerC': 'Königsberg',
-    'answerD': 'Warschau',
-    'solution': 'Königsberg',
-    'position': 1
-}, {
-    'question': 'Wann wurde das Deutsche Reich gegründet?',
-    'answerA': '1867',
-    'answerB': '1785',
-    'answerC': '1440',
-    'answerD': '1871',
-    'solution': '1871',
-    'position': 2
-}
+        'position': 4,
+        'rightAnswerId': 1
+    }
 ];
 
-let plantsQuiz = [{
-    'quizname': 'Pflanzenwelt',
-    'question':
-        'Welcher Baum verliert im Winter seine Nadeln?',
-    'answerA': 'Zeder',
-    'answerB': 'Eiche',
-    'answerC': 'Lärche',
-    'answerD': 'Tanne',
-    'solution': 'Lärche',
-    'position': 0
-},
-{
-    'question':
-        'Was haben Menschen mit Pflanzen gemein?',
-    'answerA': 'Photosynthese',
-    'answerB': 'Schwitzen',
-    'answerC': 'Fieber',
-    'answerD': 'Muskelkater',
-    'solution': 'Fieber',
-    'position': 1
 
-},
-{
-    'question':
-        'Nach was riecht der Titanwurz?',
-    'answerA': 'Zuckerwatte',
-    'answerB': 'Aas',
-    'answerC': 'Regenwald',
-    'answerD': 'Raubkatze',
-    'solution': 'Aas',
-    'position': 2
+let historyQuiz = [
+    {
+        'quizname': 'Geschichte',
+        'question': 'Warum warf man in der Schweiz in den 80ern, etwa 52.000 Hühneköpfe aus Helikoptern?',
+        'answerA': 'Seuchenexperimente',
+        'answerB': 'zur rettung des Fuchsbestands',
+        'answerC': 'zum vertreiben von Rehen',
+        'answerD': 'Oralimpfung für Füchse',
+        'solution': 'Oralimpfung für Füchse',
+        'position': 0,
+        'rightAnswerId': 4
+    },
+    {
+        'question': 'Wie hieß die Hauptstadt von Ostpreußen?',
+        'answerA': 'Lemberg',
+        'answerB': 'Insterburg',
+        'answerC': 'Königsberg',
+        'answerD': 'Warschau',
+        'solution': 'Königsberg',
+        'position': 1,
+        'rightAnswerId': 3
+    }, {
+        'question': 'Wann wurde das Deutsche Reich gegründet?',
+        'answerA': '1867',
+        'answerB': '1785',
+        'answerC': '1440',
+        'answerD': '1871',
+        'solution': '1871',
+        'position': 2,
+        'rightAnswerId': 4
+    }
+];
 
-}, {
 
-    'question':
-        'Welches Land wird wegen seiner riesigen Waldfächen, auch als Lunge der Erde bezeichnet?',
-    'answerA': 'China',
-    'answerB': 'Monaco',
-    'answerC': 'Grönland',
-    'answerD': 'Russland',
-    'solution': 'Russland',
-    'position': 3
-},
-{
-    'question':
-        'Welches ist das grösste Lebewesen in der Natur?',
-    'answerA': 'Blauwal',
-    'answerB': 'Elefant',
-    'answerC': 'Riesenfaultier',
-    'answerD': 'Armillaria-Honigpilz',
-    'solution': 'Armillaria-Honigpilz',
-    'position': 4
+let plantsQuiz = [
+    {
+        'quizname': 'Pflanzenwelt',
+        'question': 'Welcher Baum verliert im Winter seine Nadeln?',
+        'answerA': 'Zeder',
+        'answerB': 'Eiche',
+        'answerC': 'Lärche',
+        'answerD': 'Tanne',
+        'solution': 'Lärche',
+        'position': 0,
+        'rightAnswerId': 3
+    },
+    {
+        'question': 'Was haben Menschen mit Pflanzen gemein?',
+        'answerA': 'Photosynthese',
+        'answerB': 'Schwitzen',
+        'answerC': 'Fieber',
+        'answerD': 'Muskelkater',
+        'solution': 'Fieber',
+        'position': 1,
+        'rightAnswerId': 3
+    },
+    {
+        'question': 'Nach was riecht der Titanwurz?',
+        'answerA': 'Zuckerwatte',
+        'answerB': 'Aas',
+        'answerC': 'Regenwald',
+        'answerD': 'Raubkatze',
+        'solution': 'Aas',
+        'position': 2,
+        'rightAnswerId': 2
+    }, {
 
-}];
+        'question': 'Welches Land wird wegen seiner riesigen Waldfächen, auch als Lunge der Erde bezeichnet?',
+        'answerA': 'China',
+        'answerB': 'Monaco',
+        'answerC': 'Grönland',
+        'answerD': 'Russland',
+        'solution': 'Russland',
+        'position': 3,
+        'rightAnswerId': 4
+    },
+    {
+        'question': 'Welches ist das grösste Lebewesen in der Natur?',
+        'answerA': 'Blauwal',
+        'answerB': 'Elefant',
+        'answerC': 'Riesenfaultier',
+        'answerD': 'Armillaria-Honigpilz',
+        'solution': 'Armillaria-Honigpilz',
+        'position': 4,
+        'rightAnswerId': 4
+    }
+];
 
-let spaceQuiz = [{
-    'quizname': 'Weltall',
-    'question':
-        'Welcher Berg ist der höchste in unserem Sonnensystem?',
-    'answerA': 'Mount Everest',
-    'answerB': 'iii',
-    'answerC': 'Zuckerberg in meinem Kaffee',
-    'answerD': 'Olympus Moons',
-    'solution': 'Olympus Moons',
-    'position': 0
-},];
 
-let rightAnswer = 0;
+let spaceQuiz = [
+    {
+        'quizname': 'Weltall',
+        'question':
+            'Welcher Berg ist der höchste in unserem Sonnensystem?',
+        'answerA': 'Mount Everest',
+        'answerB': 'Zentralberg des Oberon',
+        'answerC': 'Zuckerberg in meinem Kaffee',
+        'answerD': 'Olympus Moons',
+        'solution': 'Olympus Moons',
+        'position': 0,
+        'rightAnswerId': 4
+    }, {
+        'quizname': 'Weltall',
+        'question':
+            'Was regnet es auf Saturn und Jupiter?',
+        'answerA': 'Diamanten',
+        'answerB': 'Wasser',
+        'answerC': 'Melonengroße Eisbrocken',
+        'answerD': 'flüssiges Methan',
+        'solution': 'Diamanten',
+        'position': 1,
+        'rightAnswerId': 1
+    }, {
+        'quizname': 'Weltall',
+        'question':
+            'Wie nennt man die Tag-Nacht-Grenze eines Himmelkörpers?',
+        'answerA': 'Zwielicht',
+        'answerB': 'Ying&Yang',
+        'answerC': 'Terminator',
+        'answerD': 'Sukusator',
+        'solution': 'Terminator',
+        'position': 2,
+        'rightAnswerId': 3
+    }
+];
+
+let rightAnswerCounter = 0;
 let optionsVisible = 0;
+let displayRightAnswer = 0;
 
 
 function initQuiz(quiz, linkI) {
     globalThis.globalQuiz = quiz;
     globalThis.cardBody = document.getElementById('card-body');
-    let intro = globalQuiz[0]['quizname'];
+
     updateCardBody(0)
     updateQuiz();
 
-    showIntro(intro);
+    showIntro();
     deActivateSidebarLinks();
     activateSidebarLink(linkI);
 }
 
 
-function showIntro(intro) {
+function showIntro() {
+    let quizname = globalQuiz[0]['quizname'];
+
     cardBody.innerHTML = /*html*/`
-    <h5 class="card-title">Wilkommen zum ausergewöhnlichen ${intro} Quiz!</h5>
+    <h5 class="card-title">Wilkommen zum ausergewöhnlichen ${quizname} Quiz!</h5>
     <p class="card-text">Bist du bereit für die Herausforderung?</p>
     <button onclick="startQuiz()" type="button" class="btn btn-warning col-4 button-start">
         START<img class="start-btn-arrow" src="img/arrow-right.png"></button>
@@ -189,28 +220,36 @@ function startQuiz() {
 
 function getCardinnerHTMLQuiz(currentQuiz) {
     return /*html*/ `
-    <span>${currentQuiz['question']}</span>
+    <span class="question">${currentQuiz['question']}</span>
 
     <div class="list-group">
      
-        <a href="#" id="answerlink1" class="question-link list-group-item" onclick="proofAnswer(${currentQuiz['position']},'${currentQuiz['solution']}','${currentQuiz['answerA']}',1)">
-            <div id="answerletter1"  class="question-letter">A</div>
-            <span>${currentQuiz['answerA']}</span>
+        <a href="#" id="answerlink1" class="answer-link list-group-item" 
+                onclick="proofAnswer(${currentQuiz['position']},'${currentQuiz['solution']}','${currentQuiz['answerA']}',1)">
+            
+            <div id="answerletter1"  class="answer-letter">A</div>
+            <div class="answer-div"><span>${currentQuiz['answerA']}</span></div>
         </a>
        
-        <a href="#" id="answerlink2" class="question-link list-group-item"  onclick="proofAnswer(${currentQuiz['position']},'${currentQuiz['solution']}','${currentQuiz['answerB']}',2)">
-            <div id="answerletter2" class="question-letter">B</div>    
-            <span>${currentQuiz['answerB']}</span>
+        <a href="#" id="answerlink2" class="answer-link list-group-item"  
+                onclick="proofAnswer(${currentQuiz['position']},'${currentQuiz['solution']}','${currentQuiz['answerB']}',2)">
+            
+            <div id="answerletter2" class="answer-letter">B</div>    
+            <div class="answer-div"><span>${currentQuiz['answerB']}</span></div>
         </a>
         
-        <a href="#" id="answerlink3" class="question-link list-group-item"  onclick="proofAnswer(${currentQuiz['position']},'${currentQuiz['solution']}','${currentQuiz['answerC']}',3)">
-            <div id="answerletter3" class="question-letter">C</div>
-            <span>${currentQuiz['answerC']}</span>
+        <a href="#" id="answerlink3" class="answer-link list-group-item"  
+                onclick="proofAnswer(${currentQuiz['position']},'${currentQuiz['solution']}','${currentQuiz['answerC']}',3)">
+            
+            <div id="answerletter3" class="answer-letter">C</div>
+            <div class="answer-div"><span>${currentQuiz['answerC']}</span></div>
         </a>
   
-        <a href="#"  id="answerlink4" class="question-link list-group-item" onclick="proofAnswer(${currentQuiz['position']},'${currentQuiz['solution']}','${currentQuiz['answerD']}',4)">
-            <div id="answerletter4" class="question-letter">D</div>
-            <span>${currentQuiz['answerD']}</span>
+        <a href="#"  id="answerlink4" class="answer-link list-group-item" 
+                onclick="proofAnswer(${currentQuiz['position']},'${currentQuiz['solution']}','${currentQuiz['answerD']}',4)">
+            
+            <div id="answerletter4" class="answer-letter">D</div>
+            <div class="answer-div"><span>${currentQuiz['answerD']}</span></div>
         </a>
 
     </div>
@@ -222,14 +261,23 @@ function proofAnswer(position, solution, answer, answerI) {
     let newPosition = position + 1;
 
     if (solution == answer) {
-        rightAnswer++;
+        rightAnswerCounter++;
         renderRightAnswer(answerI);
         updateProgressBar('bg-success');
-        setTimeout(function () { getNextQuestion(newPosition) }, 225);
+        setTimeout(function () { getNextQuestion(newPosition) }, 277);
     } else {
-        renderWrongAnswer(answerI)
+        renderSolutionIfSet(position);
+        renderWrongAnswer(answerI);
         updateProgressBar('bg-danger');
-        setTimeout(function () { getNextQuestion(newPosition) }, 225);
+        /* setTimeout(function () {}, 277) muss man so schreiben damit man variablen übergeben kann.*/
+        setTimeout(function () { getNextQuestion(newPosition) }, 277);
+    }
+}
+
+
+function renderSolutionIfSet(position) {
+    if (displayRightAnswer == 1) {
+        renderRightAnswer(globalQuiz[position]['rightAnswerId']);
     }
 }
 
@@ -267,7 +315,7 @@ function getCardinnerHTMLResult() {
         
         <div>
             <span class="result-text">Richtige Fragen:</span> 
-            <span id="result" class="result">${rightAnswer}</span> <span class="result" id="quiz-length">von ${globalQuiz.length}</span>
+            <span id="result" class="result">${rightAnswerCounter}</span> <span class="result" id="quiz-length">von ${globalQuiz.length}</span>
         </div> 
         
         <div class="share-replay-btn">
@@ -316,8 +364,9 @@ function updateCardBody(i) {
     cardBody.classList.add('card-body');
 }
 
+
 function updateQuiz() {
-    rightAnswer = 0;
+    rightAnswerCounter = 0;
     clearProgressBar();
     showHideTropy();
 }
@@ -390,7 +439,7 @@ function changeCardBg(hideBrain) {
 
 function showHideTropy() {
     let tropydiv = document.getElementById('tropy-div');
-    if (rightAnswer == globalQuiz.length) {
+    if (rightAnswerCounter == globalQuiz.length) {
         tropydiv.classList.remove('d-none');
     } else {
         tropydiv.classList.add('d-none');
@@ -412,4 +461,21 @@ function updateProgressBar(trueFalse) {
 function clearProgressBar() {
     let bar = document.getElementById('bar-div');
     bar.innerHTML = '';
+}
+
+
+function resetSwitchToggler() {
+    let input = document.getElementById('options-switch');
+    input.checked = false;
+}
+
+
+function setDisplaySolution() {
+    if (displayRightAnswer == 0) {
+        displayRightAnswer++;
+        setTimeout(showOptions, 277);
+    } else {
+        displayRightAnswer--;
+        setTimeout(showOptions, 277);
+    }
 }

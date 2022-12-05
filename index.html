@@ -38,7 +38,7 @@
     <title>Quizapp</title>
 </head>
 
-<body onload="initQuiz(animalQuiz,1)">
+<body onload="initQuiz(animalQuiz,1),resetSwitchToggler()">
 
     <div class="all-content">
 
@@ -55,26 +55,34 @@
                         <div class="card-links">
 
                             <div class="card-links-inner-div">
-                                <div class="link-bark" id="bark1"></div><a onclick="initQuiz(animalQuiz,1)" id="link1"
-                                    href="#">Tierwelt</a>
+                                <div class="link-bark" id="bark1"></div>
+                                <div>
+                                    <a onclick="initQuiz(animalQuiz,1)" id="link1" href="#">Tierwelt</a>
+                                </div>
 
                             </div>
 
                             <div class="card-links-inner-div">
-                                <div class="link-bark" id="bark2"></div><a onclick="initQuiz(historyQuiz,2)" id="link2"
-                                    href="#">Geschichte</a>
+                                <div class="link-bark" id="bark2"></div>
+                                <div>
+                                    <a onclick="initQuiz(historyQuiz,2)" id="link2" href="#">Geschichte</a>
+                                </div>
 
                             </div>
 
                             <div class="card-links-inner-div">
-                                <div class="link-bark" id="bark3"></div><a onclick="initQuiz(plantsQuiz,3)" id="link3"
-                                    href="#">Pflanzen</a>
+                                <div class="link-bark" id="bark3"></div>
+                                <div>
+                                    <a onclick="initQuiz(plantsQuiz,3)" id="link3" href="#">Pflanzen</a>
+                                </div>
 
                             </div>
 
                             <div class="card-links-inner-div">
-                                <div class="link-bark" id="bark4"></div><a onclick="initQuiz(spaceQuiz,4)" id="link4"
-                                    href="#">Weltall</a>
+                                <div class="link-bark" id="bark4"></div>
+                                <div>
+                                    <a onclick="initQuiz(spaceQuiz,4)" id="link4" href="#">Weltall</a>
+                                </div>
 
                             </div>
                         </div>
@@ -91,11 +99,11 @@
 
                     <div id="card-bg" class="col-md-8 card-right-div rounded-end">
                         <div id="option-div" class="hidden-options hide-options">
-                            <span>Richtige Fragen anzeigen?</span>
+                            <span>Richtige Antworten anzeigen?</span>
 
 
                             <label class="switch">
-                                <input type="checkbox">
+                                <input onclick="setDisplaySolution()" id="options-switch" type="checkbox">
                                 <span class="slider round"></span>
                             </label>
                         </div>
@@ -124,7 +132,7 @@
             <footer class="d-flex flex-wrap justify-content-between align-items-center my-4 border-top">
                 <p class="col-md-4 mb-0 text-muted">&copy; 2022 Pierre Lettner</p>
 
-                <ul class="nav col-md-4 justify-content-end">
+                <ul class="nav col-md-4">
                     <li class="nav-item"><a href="https://www.flaticon.com/free-icons/brain"
                             class="nav-link px-2 text-muted">Brain
                             icon
