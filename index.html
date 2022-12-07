@@ -28,7 +28,7 @@
     <meta name="msapplication-TileImage" content="img/favicon/ms-icon-144x144.png">
     <meta name="theme-color" content="#ffffff">
 
-    <script src="https://unpkg.com/@popperjs/core@2"></script>
+
     <script src="script.js"></script>
     <link rel="stylesheet" href="node_modules/bootstrap/dist/css/bootstrap.min.css">
     <link rel="stylesheet" href="style.css">
@@ -39,6 +39,12 @@
 </head>
 
 <body onload="initQuiz(animalQuiz,1),resetSwitchToggler()">
+    <audio id="Tierwelt-sound" src="sound/Tierwelt.mp3"></audio>
+    <audio id="Geschichte-sound" src="sound/Geschichte.mp3"></audio>
+    <audio id="Pflanzenwelt-sound" src="sound/Pflanzenwelt.mp3"></audio>
+    <audio id="Weltall-sound" src="sound/Weltall.mp3"></audio>
+    <audio id="cheer-sound" src="sound/crowd-cheer.mp3"></audio>
+    <audio id="failure-sound" src="sound/failure.mp3"></audio>
 
     <div class="all-content">
 
@@ -52,14 +58,13 @@
                     <div class="col-md-4  sidebar-card rounded-start">
                         <img src="img/logo.png">
 
-                        <div class="card-links">
+                        <div class="card-links" id="card-links-div">
 
                             <div class="card-links-inner-div">
                                 <div class="link-bark" id="bark1"></div>
                                 <div>
                                     <a onclick="initQuiz(animalQuiz,1)" id="link1" href="#">Tierwelt</a>
                                 </div>
-
                             </div>
 
                             <div class="card-links-inner-div">
@@ -67,7 +72,6 @@
                                 <div>
                                     <a onclick="initQuiz(historyQuiz,2)" id="link2" href="#">Geschichte</a>
                                 </div>
-
                             </div>
 
                             <div class="card-links-inner-div">
@@ -75,7 +79,6 @@
                                 <div>
                                     <a onclick="initQuiz(plantsQuiz,3)" id="link3" href="#">Pflanzen</a>
                                 </div>
-
                             </div>
 
                             <div class="card-links-inner-div">
@@ -83,15 +86,15 @@
                                 <div>
                                     <a onclick="initQuiz(spaceQuiz,4)" id="link4" href="#">Weltall</a>
                                 </div>
-
                             </div>
+
                         </div>
 
                         <div class="counter d-none" id="counter-div">
                             <span>Frage:</span>
-                            <div><span id="current"></span>
+                            <div><span class="fw-bold" id="current"></span>
                                 <span>von</span>
-                                <span id="quizlength"></span>
+                                <span class="fw-bold" id="quizlength"></span>
                             </div>
                         </div>
 
@@ -101,7 +104,6 @@
                         <div id="option-div" class="hidden-options hide-options">
                             <span>Richtige Antworten anzeigen?</span>
 
-
                             <label class="switch">
                                 <input onclick="setDisplaySolution()" id="options-switch" type="checkbox">
                                 <span class="slider round"></span>
@@ -109,45 +111,74 @@
                         </div>
                         <img onclick="showOptions()" class="options" src="img/cog.png">
 
-
                         <div class="card-body" id="card-body">
                             <h5 class="card-title" id="intro"></h5>
 
                             <p class="card-text">Bist du bereit für die Herausforderung?</p>
-                            <button onclick="startQuiz()" type="button" class="btn btn-warning col-4 button-start">Start
-                                ></button>
+                            <button onclick="startQuiz()" type="button" class="btn btn-warning col-4 button-start">
+                                Start ></button>
                         </div>
                     </div>
-
                 </div>
-
-
             </div>
 
             <div id="tropy-div" class="d-none"><img class="tropy" src="img/tropy.png"></div>
 
         </div>
 
-        <div class="container">
+        <div class="container footer">
             <footer class="d-flex flex-wrap justify-content-between align-items-center my-4 border-top">
-                <p class="col-md-4 mb-0 text-muted">&copy; 2022 Pierre Lettner</p>
+                <p class="col-md-4 mb-0 text-muted">Quizapp 2022 Pierre Lettner</p>
 
                 <ul class="nav col-md-4">
                     <li class="nav-item"><a href="https://www.flaticon.com/free-icons/brain"
                             class="nav-link px-2 text-muted">Brain
                             icon
                             created by Freepik -
-                            Flaticon</a></li>
+                            Flaticon</a>
+                    </li>
                     <li class="nav-item"><a href="https://www.flaticon.com/free-icons/cog"
                             class="nav-link px-2 text-muted">Cog icons
                             created
                             by juicy_fish -
-                            Flaticon</a></li>
+                            Flaticon</a>
+                    </li>
+                    <li class="nav-item"><a
+                            href="https://pixabay.com/?utm_source=link-attribution&amp;utm_medium=referral&amp;utm_campaign=music&amp;utm_content=6033"
+                            class="nav-link px-2 text-muted">Sound Effects from Pixabay</a>
+                    </li>
+                    <li class="nav-item"><a href="https://www.flaticon.com/free-icons/cog"
+                            class="nav-link px-2 text-muted"></a>
+                    </li>
                 </ul>
+
             </footer>
         </div>
 
     </div>
+    Sound Effect by <a
+        href="https://pixabay.com/de/users/placidplace-25572496/?utm_source=link-attribution&amp;utm_medium=referral&amp;utm_campaign=music&amp;utm_content=108380">Placidplace</a>
+    from <a
+        href="https://pixabay.com/sound-effects//?utm_source=link-attribution&amp;utm_medium=referral&amp;utm_campaign=music&amp;utm_content=108380">Pixabay</a>
+    Sound Effect by <a
+        href="https://pixabay.com/de/users/submority-30821389/?utm_source=link-attribution&amp;utm_medium=referral&amp;utm_campaign=music&amp;utm_content=124763">SUBMORITY</a>
+    from <a
+        href="https://pixabay.com/sound-effects//?utm_source=link-attribution&amp;utm_medium=referral&amp;utm_campaign=music&amp;utm_content=124763">Pixabay</a>
+
+    Sound Effect from <a
+        href="https://pixabay.com/sound-effects/?utm_source=link-attribution&amp;utm_medium=referral&amp;utm_campaign=music&amp;utm_content=75923">Pixabay</a>
+
+    Sound Effect from <a
+        href="https://pixabay.com/?utm_source=link-attribution&amp;utm_medium=referral&amp;utm_campaign=music&amp;utm_content=5933">Pixabay</a>
+
+    Sound Effect from <a
+        href="https://pixabay.com/?utm_source=link-attribution&amp;utm_medium=referral&amp;utm_campaign=music&amp;utm_content=6104">Pixabay</a>
+
+    Sound Effect from <a
+        href="https://pixabay.com/sound-effects/?utm_source=link-attribution&amp;utm_medium=referral&amp;utm_campaign=music&amp;utm_content=6263">Pixabay</a>
+
+    Sound Effect from <a
+        href="https://pixabay.com/?utm_source=link-attribution&amp;utm_medium=referral&amp;utm_campaign=music&amp;utm_content=6347">Pixabay</a>
 
 </body>
 

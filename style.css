@@ -78,6 +78,7 @@
 .counter {
     color: lightgray;
     font-size: 13px;
+    font-family: 'RUBIK', sans-serif;
     margin-right: 20px;
     margin-top: 15px;
 }
@@ -99,10 +100,6 @@
     background-color: #F6F6F6 !important;
 }
 
-.card-right-div img {
-    height: 100%;
-    object-fit: contain;
-}
 
 .card-body {
     display: flex;
@@ -206,7 +203,6 @@
 .answer-div {
     margin-left: 20px;
     font-family: 'RUBIK', sans-serif;
-    font-weight: 400;
     font-size: 18px;
 }
 
@@ -257,11 +253,14 @@
 
 .share-replay-btn {
     font-family: 'RUBIK', sans-serif;
-    width: 140px;
-    height: 85px;
+    width: 145px;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
+}
+
+.share-btn {
+    background-color: #0a25c1;
 }
 
 .tropy {
@@ -276,7 +275,7 @@
     position: absolute;
     right: 5px;
     top: 5px;
-    height: 25px !important;
+    height: 25px;
 }
 
 .options:hover {
@@ -393,14 +392,27 @@ input:checked+.slider:before {
     pointer-events: none;
 }
 
+.card-links-mobile {
+    width: 16em !important;
+}
+
+.footer {
+    font-family: 'RUBIK', sans-serif;
+}
+
+.copy-check {
+    font-size: 0.9em;
+}
+
 @media(max-width:660px) {
 
     .sidebar-card img {
         height: 3em;
     }
 
-    .sidebar-card a {
-        font-size: 0.9em !important;
+    .card-links {
+        transition: all 225ms ease-in-out;
+        font-size: 0.9em;
     }
 
     .card-title {
@@ -409,6 +421,11 @@ input:checked+.slider:before {
 
     .card-text {
         font-size: 1em;
+    }
+
+    .share-replay-btn {
+        width: 10em;
+        height: 5.5em;
     }
 
     .button-start {
@@ -431,17 +448,6 @@ input:checked+.slider:before {
     .card-body span:nth-child(1) {
         font-size: 1em;
     }
-
-    .question-link {
-        font-size: 1em;
-        text-align: start;
-        padding-left: 3em;
-    }
-
-    .question-link span {
-        margin-left: 0em;
-    }
-
 }
 
 @media(max-width:600px) {
@@ -488,7 +494,7 @@ input:checked+.slider:before {
     .card-links {
         justify-content: space-evenly;
         flex-direction: row;
-        width: 18em;
+        width: 21em;
         height: fit-content;
         margin-top: 0em;
     }
@@ -498,14 +504,6 @@ input:checked+.slider:before {
         margin-right: 0em;
         margin-left: 1em;
 
-    }
-
-    .question-link {
-        font-size: 0.8em;
-        padding-left: 1em;
-        display: flex;
-        justify-content: start;
-        align-items: center;
     }
 
     .start-btn-arrow {
@@ -551,15 +549,21 @@ input:checked+.slider:before {
     }
 
     .card-links {
-        width: 17em;
+        transition: all 225ms ease-in-out;
+        font-size: 0.7em;
+        width: 21em;
+    }
+
+    .card-link-active {
+        font-size: 1.2em !important;
     }
 
     .counter {
         width: 4em;
         height: 2.8em;
-        margin-top: 1.5em;
-        font-size: 0.7em;
-        margin-left: 0em;
+        margin-top: 0em;
+        font-size: 0.66em;
+        margin-right: 3em;
     }
 
     .my-4 {
@@ -589,7 +593,11 @@ input:checked+.slider:before {
     }
 
     .link-bark {
-        width: 3.3em;
+        width: 100%;
         height: 0.2em;
+    }
+
+    .tropy {
+        top: 29vh;
     }
 }

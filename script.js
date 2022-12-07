@@ -52,7 +52,6 @@ let animalQuiz = [
     }
 ];
 
-
 let historyQuiz = [
     {
         'quizname': 'Geschichte',
@@ -85,7 +84,6 @@ let historyQuiz = [
         'rightAnswerId': 4
     }
 ];
-
 
 let plantsQuiz = [
     {
@@ -141,7 +139,6 @@ let plantsQuiz = [
     }
 ];
 
-
 let spaceQuiz = [
     {
         'quizname': 'Weltall',
@@ -156,8 +153,7 @@ let spaceQuiz = [
         'rightAnswerId': 4
     }, {
         'quizname': 'Weltall',
-        'question':
-            'Was regnet es auf Saturn und Jupiter?',
+        'question': 'Was regnet es auf Saturn und Jupiter?',
         'answerA': 'Diamanten',
         'answerB': 'Wasser',
         'answerC': 'Melonengroße Eisbrocken',
@@ -167,8 +163,7 @@ let spaceQuiz = [
         'rightAnswerId': 1
     }, {
         'quizname': 'Weltall',
-        'question':
-            'Wie nennt man die Tag-Nacht-Grenze eines Himmelkörpers?',
+        'question': 'Wie nennt man die Tag-Nacht-Grenze eines Himmelkörpers?',
         'answerA': 'Zwielicht',
         'answerB': 'Ying&Yang',
         'answerC': 'Terminator',
@@ -185,15 +180,14 @@ let displayRightAnswer = 0;
 
 
 function initQuiz(quiz, linkI) {
-    globalThis.globalQuiz = quiz;
+    globalThis.globalQuiz = quiz; /*globalThis macht Variablen global nutzbar*/
     globalThis.cardBody = document.getElementById('card-body');
-
-    updateCardBody(0)
-    updateQuiz();
-
+    playQuizSound();
+    updateCardBody(0) /*ändert hintergrung und klasse, des card-bodys*/
+    updateQuiz(); /* setzt parameter zurück*/
     showIntro();
-    deActivateSidebarLinks();
-    activateSidebarLink(linkI);
+    deActivateSidebarLinks(); /*graut alle Sidebarlinks ein*/
+    activateSidebarLink(linkI); /*hebt ausgewählten link hervor*/
 }
 
 
@@ -201,7 +195,7 @@ function showIntro() {
     let quizname = globalQuiz[0]['quizname'];
 
     cardBody.innerHTML = /*html*/`
-    <h5 class="card-title">Wilkommen zum ausergewöhnlichen ${quizname} Quiz!</h5>
+    <h5 class="card-title">Wilkommen zum ausergewöhnlichen<br> ${quizname} Quiz!</h5>
     <p class="card-text">Bist du bereit für die Herausforderung?</p>
     <button onclick="startQuiz()" type="button" class="btn btn-warning col-4 button-start">
         START<img class="start-btn-arrow" src="img/arrow-right.png"></button>
@@ -210,8 +204,9 @@ function showIntro() {
 
 
 function startQuiz() {
+    playAnySound('game-start');
     updateQuiz()
-    sidebarLinksPointerNone();
+    sidebarLinksPointerNone(); /*verhindert das anklicken der Links während man im Quiz ist*/
     showCounter(0);
     updateCardBody(1)
     cardBody.innerHTML = getCardinnerHTMLQuiz(globalQuiz[0]);
@@ -258,42 +253,43 @@ function getCardinnerHTMLQuiz(currentQuiz) {
 
 
 function proofAnswer(position, solution, answer, answerI) {
-    let newPosition = position + 1;
-
+    let newPosition = position + 1; /*newPosition ist die Position der nächsten Frage*/
     if (solution == answer) {
         rightAnswerCounter++;
+        playAnySound('correct');
         renderRightAnswer(answerI);
         updateProgressBar('bg-success');
-        setTimeout(function () { getNextQuestion(newPosition) }, 277);
+        setTimeout(function () { getNextQuestion(newPosition) }, 500);
     } else {
+        playAnySound('wrong');
         renderSolutionIfSet(position);
         renderWrongAnswer(answerI);
         updateProgressBar('bg-danger');
         /* setTimeout(function () {}, 277) muss man so schreiben damit man variablen übergeben kann.*/
-        setTimeout(function () { getNextQuestion(newPosition) }, 277);
-    }
-}
-
-
-function renderSolutionIfSet(position) {
-    if (displayRightAnswer == 1) {
-        renderRightAnswer(globalQuiz[position]['rightAnswerId']);
+        setTimeout(function () { getNextQuestion(newPosition) }, 500);
     }
 }
 
 
 function getNextQuestion(newPosition) {
-    if (newPosition < globalQuiz.length) {
+    if (newPosition < globalQuiz.length) { /*überprüft ob noch eine Frage übrig ist, ansonsten wird das Ergebnis angezeigt*/
         showCounter(newPosition);
         cardBody.innerHTML = getCardinnerHTMLQuiz(globalQuiz[newPosition]);
     } else {
         showResult();
+        if (rightAnswerCounter == globalQuiz.length) {
+            playCheerSound();
+        }
+
+        if (rightAnswerCounter == 0) {
+            playFailureSound();
+        }
     }
 }
 
 
 function showResult() {
-    showHideTropy();
+    showHideTropy(); /*zeigt Tropähe an wenn alle Fragen eines Quiz richtig beantwortet wurden*/
     activateSidebarLinks();
     let counterDiv = document.getElementById(`counter-div`);
     counterDiv.classList.add('d-none');
@@ -319,27 +315,52 @@ function getCardinnerHTMLResult() {
         </div> 
         
         <div class="share-replay-btn">
-            <button type="button" class="btn btn-primary">TEILEN</button>
-            <button type="button" 
-            class="btn btn-outline-primary transparent-btn-replay" onclick="startQuiz(globalQuiz)">
-            WIEDERHOLEN</button>
+            <button type="button" class="btn btn-primary share-btn" id="share-button" onclick="shareResult()">
+            TEILEN
+            </button>
+            
+            <button type="button" class="btn btn-outline-primary transparent-btn-replay" onclick="startQuiz(globalQuiz)">
+            WIEDERHOLEN
+            </button>
         </div>
     `;
 }
 
+/*zeigt richtige Antworten immer an wenn eingestellt*/
+function renderSolutionIfSet(position) {
+    if (displayRightAnswer == 1) {
+        renderRightAnswer(globalQuiz[position]['rightAnswerId']);
+    }
+}
+
+
+function shareResult() {
+    let shareButton = document.getElementById('share-button');
+    shareButton.innerHTML = '<span class="copy-check" >Ergebnis kopiert!</span>'
+    /*Schreibt text in die Zwischenablage des users*/
+    navigator.clipboard.writeText(`
+    Ich habe das ${globalQuiz[0]['quizname']} Quiz mit ${rightAnswerCounter} von ${globalQuiz.length} beendet.
+    Probiere es selbst!
+    http://pierre-lettner.developerakademie.net/Projekte/Quizapp/index.html
+    `);
+}
+
 
 function showOptions() {
+    playAnySound('cog-push');
     let options = document.getElementById('option-div');
-
+    /*wenn optionsVisible 1 ist, wird options geschlossen*/
     if (optionsVisible == 1) {
         options.classList.add('hide-options');
         options.classList.remove('show-options');
     }
+    /*wenn optionsVisible 0 ist, wird options geöffnet*/
     if (optionsVisible == 0) {
         options.classList.add('show-options');
         options.classList.remove('hide-options');
     }
-
+    /*mit einer Klassenabfrage wird überprüft ob options offen ist,
+    ob offen oder zu wird in der optionsVisible Variable gespeichert.*/
     if (options.classList.contains('show-options')) {
         optionsVisible++;
     } else { optionsVisible--; }
@@ -353,7 +374,7 @@ function showCounter(newPosition) {
     let quizLength = document.getElementById('quizlength')
 
     counterDiv.classList.remove('d-none');
-    Counter.innerHTML = number + 1;
+    Counter.innerHTML = number + 1; /*hier plus 1 weil position mit 0 beginnt*/
     quizLength.innerHTML = globalQuiz.length;
 }
 
@@ -371,7 +392,7 @@ function updateQuiz() {
     showHideTropy();
 }
 
-
+/*färbt richtige Antwort per Klassenänderung grün ein*/
 function renderRightAnswer(i) {
     let answerLink = document.getElementById(`answerlink${i}`);
     let answerLetter = document.getElementById(`answerletter${i}`);
@@ -379,7 +400,7 @@ function renderRightAnswer(i) {
     answerLetter.classList.add('right-answer-letter');
 }
 
-
+/*färbt falsche Antwort per Klassenänderung rot ein*/
 function renderWrongAnswer(i) {
     let answerLink = document.getElementById(`answerlink${i}`);
     let answerLetter = document.getElementById(`answerletter${i}`);
@@ -387,7 +408,7 @@ function renderWrongAnswer(i) {
     answerLetter.classList.add('wrong-answer-letter');
 }
 
-
+/*hebt einzelnen Sidebar Link und Barke hervor*/
 function activateSidebarLink(position) {
     let posLink = 'link' + position;
     let posBark = 'bark' + position;
@@ -397,9 +418,10 @@ function activateSidebarLink(position) {
 
     bark.classList.add('card-link-active');
     link.classList.add('card-link-active');
+
 }
 
-
+/*macht alle Sidebar Links wieder anklickbar*/
 function activateSidebarLinks() {
     for (let i = 1; i < 5; i++) {
         let link = document.getElementById(`link${i}`);
@@ -407,7 +429,7 @@ function activateSidebarLinks() {
     }
 }
 
-
+/*graut alle Sidebar Links ein*/
 function deActivateSidebarLinks() {
     for (let i = 1; i < 5; i++) {
         let link = document.getElementById(`link${i}`);
@@ -417,7 +439,7 @@ function deActivateSidebarLinks() {
     }
 }
 
-
+/*macht das alle Siedebar Links nicht mehr anklickbar sind*/
 function sidebarLinksPointerNone() {
     for (let i = 1; i < 5; i++) {
         let link = document.getElementById(`link${i}`);
@@ -449,6 +471,7 @@ function showHideTropy() {
 
 function updateProgressBar(trueFalse) {
     let bar = document.getElementById('bar-div');
+    /*100 geteilt durch die länge des aktuellen Quiz,legt fest welche width die einzelnen Teile der Progress-bar haben werden*/
     let width = 100 / globalQuiz.length;
 
     bar.innerHTML +=/*html*/`
@@ -463,14 +486,15 @@ function clearProgressBar() {
     bar.innerHTML = '';
 }
 
-
+/*stellt sicher das der Optionen Schalter immer auf Aus ist, wenn die Seite lädt*/
 function resetSwitchToggler() {
     let input = document.getElementById('options-switch');
     input.checked = false;
 }
 
-
+/*stellt ein ob richtige Fragen immer angezeigt werden sollen*/
 function setDisplaySolution() {
+    playAnySound('switch');
     if (displayRightAnswer == 0) {
         displayRightAnswer++;
         setTimeout(showOptions, 277);
@@ -478,4 +502,47 @@ function setDisplaySolution() {
         displayRightAnswer--;
         setTimeout(showOptions, 277);
     }
+}
+
+
+function playQuizSound() {
+    stopAllAudio();
+    let quizName = globalQuiz[0]['quizname'];
+    let audioSound = document.getElementById(`${quizName}-sound`);
+    audioSound.volume = 0.4;
+    audioSound.load();
+    audioSound.play();
+    setTimeout(function () { audioSound.pause() }, 10000);
+}
+
+
+function playCheerSound() {
+    let cheerSound = document.getElementById('cheer-sound');
+    cheerSound.volume = 0.4;
+    cheerSound.play();
+    setTimeout(function () { cheerSound.pause() }, 10000);
+
+}
+
+
+function playFailureSound() {
+    let failureSound = document.getElementById('failure-sound');
+    failureSound.volume = 0.4;
+    failureSound.play();
+}
+
+
+function playAnySound(soundName) {
+    let sound = new Audio(src = `sound/${soundName}.mp3`);
+    sound.volume = 0.4;
+    sound.load();
+    sound.play();
+}
+
+
+function stopAllAudio() {
+    let allAudios = document.querySelectorAll('audio');
+    allAudios.forEach(function (audio) {
+        audio.pause();
+    });
 }
