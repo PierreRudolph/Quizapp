@@ -2,13 +2,6 @@
 <html lang="en">
 
 <head>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inconsolata:wght@400;700;800&
-        family=Open+Sans:wght@300;400;700&family=PT+Sans:ital,wght@0,400;0,700;1,400;1,700&display=swap"
-        rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css2?family=Rubik:wght@300;400;500;600;700;800;900&display=swap"
-        rel="stylesheet">
 
     <link rel="apple-touch-icon" sizes="57x57" href="img/favicon/apple-icon-57x57.png">
     <link rel="apple-touch-icon" sizes="60x60" href="img/favicon/apple-icon-60x60.png">
@@ -32,13 +25,14 @@
     <script src="script.js"></script>
     <link rel="stylesheet" href="node_modules/bootstrap/dist/css/bootstrap.min.css">
     <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="fonts.css">
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Quizapp</title>
 </head>
 
-<body onload="initQuiz(animalQuiz,1),resetSwitchToggler()">
+<body onload="initQuiz(animal,1),resetSwitchToggler()">
     <audio id="Tierwelt-sound" src="sound/Tierwelt.mp3"></audio>
     <audio id="Geschichte-sound" src="sound/Geschichte.mp3"></audio>
     <audio id="Pflanzenwelt-sound" src="sound/Pflanzenwelt.mp3"></audio>
@@ -63,28 +57,28 @@
                             <div class="card-links-inner-div">
                                 <div class="link-bark" id="bark1"></div>
                                 <div>
-                                    <a onclick="initQuiz(animalQuiz,1)" id="link1" href="#">Tierwelt</a>
+                                    <a onclick="initQuiz(animal,1)" id="link1" href="#">Tierwelt</a>
                                 </div>
                             </div>
 
                             <div class="card-links-inner-div">
                                 <div class="link-bark" id="bark2"></div>
                                 <div>
-                                    <a onclick="initQuiz(historyQuiz,2)" id="link2" href="#">Geschichte</a>
+                                    <a onclick="initQuiz(history,2)" id="link2" href="#">Geschichte</a>
                                 </div>
                             </div>
 
                             <div class="card-links-inner-div">
                                 <div class="link-bark" id="bark3"></div>
                                 <div>
-                                    <a onclick="initQuiz(plantsQuiz,3)" id="link3" href="#">Pflanzen</a>
+                                    <a onclick="initQuiz(plants,3)" id="link3" href="#">Pflanzen</a>
                                 </div>
                             </div>
 
                             <div class="card-links-inner-div">
                                 <div class="link-bark" id="bark4"></div>
                                 <div>
-                                    <a onclick="initQuiz(spaceQuiz,4)" id="link4" href="#">Weltall</a>
+                                    <a onclick="initQuiz(space,4)" id="link4" href="#">Weltall</a>
                                 </div>
                             </div>
 
@@ -105,7 +99,7 @@
                             <span>Richtige Antworten anzeigen?</span>
 
                             <label class="switch">
-                                <input onclick="setDisplaySolution()" id="options-switch" type="checkbox">
+                                <input onclick="setShowRightAnswer()" id="options-switch" type="checkbox">
                                 <span class="slider round"></span>
                             </label>
                         </div>
@@ -147,38 +141,21 @@
                             href="https://pixabay.com/?utm_source=link-attribution&amp;utm_medium=referral&amp;utm_campaign=music&amp;utm_content=6033"
                             class="nav-link px-2 text-muted">Sound Effects from Pixabay</a>
                     </li>
-                    <li class="nav-item"><a href="https://www.flaticon.com/free-icons/cog"
-                            class="nav-link px-2 text-muted"></a>
+                    <li class="nav-item"><a
+                            href="https://pixabay.com/de/users/placidplace-25572496/?utm_source=link-attribution&amp;utm_medium=referral&amp;utm_campaign=music&amp;utm_content=108380"
+                            class="nav-link px-2 text-muted">Sound Effect by Placidplace from Pixabay</a>
                     </li>
+                    <li class="nav-item"><a
+                            href="https://pixabay.com/de/users/submority-30821389/?utm_source=link-attribution&amp;utm_medium=referral&amp;utm_campaign=music&amp;utm_content=124763"
+                            class="nav-link px-2 text-muted">Sound Effect by SUBMORITY from Pixabay</a>
+                    </li>
+
                 </ul>
 
             </footer>
         </div>
 
     </div>
-    Sound Effect by <a
-        href="https://pixabay.com/de/users/placidplace-25572496/?utm_source=link-attribution&amp;utm_medium=referral&amp;utm_campaign=music&amp;utm_content=108380">Placidplace</a>
-    from <a
-        href="https://pixabay.com/sound-effects//?utm_source=link-attribution&amp;utm_medium=referral&amp;utm_campaign=music&amp;utm_content=108380">Pixabay</a>
-    Sound Effect by <a
-        href="https://pixabay.com/de/users/submority-30821389/?utm_source=link-attribution&amp;utm_medium=referral&amp;utm_campaign=music&amp;utm_content=124763">SUBMORITY</a>
-    from <a
-        href="https://pixabay.com/sound-effects//?utm_source=link-attribution&amp;utm_medium=referral&amp;utm_campaign=music&amp;utm_content=124763">Pixabay</a>
-
-    Sound Effect from <a
-        href="https://pixabay.com/sound-effects/?utm_source=link-attribution&amp;utm_medium=referral&amp;utm_campaign=music&amp;utm_content=75923">Pixabay</a>
-
-    Sound Effect from <a
-        href="https://pixabay.com/?utm_source=link-attribution&amp;utm_medium=referral&amp;utm_campaign=music&amp;utm_content=5933">Pixabay</a>
-
-    Sound Effect from <a
-        href="https://pixabay.com/?utm_source=link-attribution&amp;utm_medium=referral&amp;utm_campaign=music&amp;utm_content=6104">Pixabay</a>
-
-    Sound Effect from <a
-        href="https://pixabay.com/sound-effects/?utm_source=link-attribution&amp;utm_medium=referral&amp;utm_campaign=music&amp;utm_content=6263">Pixabay</a>
-
-    Sound Effect from <a
-        href="https://pixabay.com/?utm_source=link-attribution&amp;utm_medium=referral&amp;utm_campaign=music&amp;utm_content=6347">Pixabay</a>
 
 </body>
 

@@ -1,4 +1,4 @@
-let animalQuiz = [
+let animal = [
     {
         'quizname': 'Tierwelt',
         'question': 'Welches Tier hat drei Herzen?',
@@ -52,7 +52,7 @@ let animalQuiz = [
     }
 ];
 
-let historyQuiz = [
+let history = [
     {
         'quizname': 'Geschichte',
         'question': 'Warum warf man in der Schweiz in den 80ern, etwa 52.000 Hühneköpfe aus Helikoptern?',
@@ -85,7 +85,7 @@ let historyQuiz = [
     }
 ];
 
-let plantsQuiz = [
+let plants = [
     {
         'quizname': 'Pflanzenwelt',
         'question': 'Welcher Baum verliert im Winter seine Nadeln?',
@@ -139,7 +139,7 @@ let plantsQuiz = [
     }
 ];
 
-let spaceQuiz = [
+let space = [
     {
         'quizname': 'Weltall',
         'question':
@@ -176,14 +176,14 @@ let spaceQuiz = [
 
 let rightAnswerCounter = 0;
 let optionsVisible = 0;
-let displayRightAnswer = 0;
+let showRightAnswer = 0;
 
 
 function initQuiz(quiz, linkI) {
     globalThis.globalQuiz = quiz; /*globalThis macht Variablen global nutzbar*/
     globalThis.cardBody = document.getElementById('card-body');
     playQuizSound();
-    updateCardBody(0) /*ändert hintergrung und klasse, des card-bodys*/
+    updateCard(0) /*ändert hintergrung und klasse, des card-bodys*/
     updateQuiz(); /* setzt parameter zurück*/
     showIntro();
     deActivateSidebarLinks(); /*graut alle Sidebarlinks ein*/
@@ -208,47 +208,8 @@ function startQuiz() {
     updateQuiz()
     sidebarLinksPointerNone(); /*verhindert das anklicken der Links während man im Quiz ist*/
     showCounter(0);
-    updateCardBody(1)
-    cardBody.innerHTML = getCardinnerHTMLQuiz(globalQuiz[0]);
-}
-
-
-function getCardinnerHTMLQuiz(currentQuiz) {
-    return /*html*/ `
-    <span class="question">${currentQuiz['question']}</span>
-
-    <div class="list-group">
-     
-        <a href="#" id="answerlink1" class="answer-link list-group-item" 
-                onclick="proofAnswer(${currentQuiz['position']},'${currentQuiz['solution']}','${currentQuiz['answerA']}',1)">
-            
-            <div id="answerletter1"  class="answer-letter">A</div>
-            <div class="answer-div"><span>${currentQuiz['answerA']}</span></div>
-        </a>
-       
-        <a href="#" id="answerlink2" class="answer-link list-group-item"  
-                onclick="proofAnswer(${currentQuiz['position']},'${currentQuiz['solution']}','${currentQuiz['answerB']}',2)">
-            
-            <div id="answerletter2" class="answer-letter">B</div>    
-            <div class="answer-div"><span>${currentQuiz['answerB']}</span></div>
-        </a>
-        
-        <a href="#" id="answerlink3" class="answer-link list-group-item"  
-                onclick="proofAnswer(${currentQuiz['position']},'${currentQuiz['solution']}','${currentQuiz['answerC']}',3)">
-            
-            <div id="answerletter3" class="answer-letter">C</div>
-            <div class="answer-div"><span>${currentQuiz['answerC']}</span></div>
-        </a>
-  
-        <a href="#"  id="answerlink4" class="answer-link list-group-item" 
-                onclick="proofAnswer(${currentQuiz['position']},'${currentQuiz['solution']}','${currentQuiz['answerD']}',4)">
-            
-            <div id="answerletter4" class="answer-letter">D</div>
-            <div class="answer-div"><span>${currentQuiz['answerD']}</span></div>
-        </a>
-
-    </div>
-    `;
+    updateCard(1)
+    cardBody.innerHTML = getinnerHTMLQuiz(globalQuiz[0]);
 }
 
 
@@ -257,24 +218,24 @@ function proofAnswer(position, solution, answer, answerI) {
     if (solution == answer) {
         rightAnswerCounter++;
         playAnySound('correct');
-        renderRightAnswer(answerI);
+        addClassRightAnswer(answerI);
         updateProgressBar('bg-success');
-        setTimeout(function () { getNextQuestion(newPosition) }, 500);
+        setTimeout(function () { showNextQuestion(newPosition) }, 500);
     } else {
         playAnySound('wrong');
-        renderSolutionIfSet(position);
-        renderWrongAnswer(answerI);
+        showRightAnswerIfSet(position);
+        addClassWrongAnswer(answerI);
         updateProgressBar('bg-danger');
         /* setTimeout(function () {}, 277) muss man so schreiben damit man variablen übergeben kann.*/
-        setTimeout(function () { getNextQuestion(newPosition) }, 500);
+        setTimeout(function () { showNextQuestion(newPosition) }, 500);
     }
 }
 
 
-function getNextQuestion(newPosition) {
+function showNextQuestion(newPosition) {
     if (newPosition < globalQuiz.length) { /*überprüft ob noch eine Frage übrig ist, ansonsten wird das Ergebnis angezeigt*/
         showCounter(newPosition);
-        cardBody.innerHTML = getCardinnerHTMLQuiz(globalQuiz[newPosition]);
+        cardBody.innerHTML = getinnerHTMLQuiz(globalQuiz[newPosition]);
     } else {
         showResult();
         if (rightAnswerCounter == globalQuiz.length) {
@@ -297,13 +258,59 @@ function showResult() {
     cardBody.classList.remove('card-body');
     cardBody.classList.add('result-card-body');
 
-    cardBody.innerHTML = getCardinnerHTMLResult();
+    cardBody.innerHTML = getinnerHTMLResult();
 }
 
 
-function getCardinnerHTMLResult() {
+function getinnerHTMLQuiz(currentQuiz) {
+    return /*html*/ `
+    <span class="question">${currentQuiz['question']}</span>
+
+    <div class="list-group">
+     
+        <a href="#" id="answerlink1" class="answer-link list-group-item" 
+                onclick="proofAnswer(${currentQuiz['position']},'${currentQuiz['solution']}','${currentQuiz['answerA']}',1)">
+            
+            <div id="answerletter1"  class="answer-letter">A</div>
+            <div class="answer-div">
+                <span>${currentQuiz['answerA']}</span>
+            </div>
+        </a>
+       
+        <a href="#" id="answerlink2" class="answer-link list-group-item"  
+                onclick="proofAnswer(${currentQuiz['position']},'${currentQuiz['solution']}','${currentQuiz['answerB']}',2)">
+            
+            <div id="answerletter2" class="answer-letter">B</div>    
+            <div class="answer-div">
+                <span>${currentQuiz['answerB']}</span>
+            </div>
+        </a>
+        
+        <a href="#" id="answerlink3" class="answer-link list-group-item"  
+                onclick="proofAnswer(${currentQuiz['position']},'${currentQuiz['solution']}','${currentQuiz['answerC']}',3)">
+            
+            <div id="answerletter3" class="answer-letter">C</div>
+            <div class="answer-div">
+                <span>${currentQuiz['answerC']}</span>
+            </div>
+        </a>
+  
+        <a href="#"  id="answerlink4" class="answer-link list-group-item" 
+                onclick="proofAnswer(${currentQuiz['position']},'${currentQuiz['solution']}','${currentQuiz['answerD']}',4)">
+            
+            <div id="answerletter4" class="answer-letter">D</div>
+            <div class="answer-div">
+                <span>${currentQuiz['answerD']}</span>
+            </div>
+        </a>
+
+    </div>
+    `;
+}
+
+
+function getinnerHTMLResult() {
     return /*html*/`
-    
     <img class="result-img" src="img/brain result.png">
         <div class="result-headline" >
             <span>${globalQuiz[0]['quizname']} Quiz Vollendet</span>
@@ -316,28 +323,29 @@ function getCardinnerHTMLResult() {
         
         <div class="share-replay-btn">
             <button type="button" class="btn btn-primary share-btn" id="share-button" onclick="shareResult()">
-            TEILEN
+                TEILEN
             </button>
             
             <button type="button" class="btn btn-outline-primary transparent-btn-replay" onclick="startQuiz(globalQuiz)">
-            WIEDERHOLEN
+                WIEDERHOLEN
             </button>
         </div>
     `;
 }
 
-/*zeigt richtige Antworten immer an wenn eingestellt*/
-function renderSolutionIfSet(position) {
-    if (displayRightAnswer == 1) {
-        renderRightAnswer(globalQuiz[position]['rightAnswerId']);
-    }
+
+function getinnerHTMLProgressBar(trueFalse, width) {
+    return /*html*/`
+    <div class="progress-bar ${trueFalse} border-end" role="progressbar"  style="width: ${width}%">
+        </div>
+        `;
 }
 
 
 function shareResult() {
     let shareButton = document.getElementById('share-button');
     shareButton.innerHTML = '<span class="copy-check" >Ergebnis kopiert!</span>'
-    /*Schreibt text in die Zwischenablage des users*/
+    /*Schreibt den vorgegebenen Text in die Zwischenablage des users*/
     navigator.clipboard.writeText(`
     Ich habe das ${globalQuiz[0]['quizname']} Quiz mit ${rightAnswerCounter} von ${globalQuiz.length} beendet.
     Probiere es selbst!
@@ -359,8 +367,13 @@ function showOptions() {
         options.classList.add('show-options');
         options.classList.remove('hide-options');
     }
+    getOptionsStatus(options);
+}
+
+
+function getOptionsStatus(options) {
     /*mit einer Klassenabfrage wird überprüft ob options offen ist,
-    ob offen oder zu wird in der optionsVisible Variable gespeichert.*/
+        ob offen oder zu wird in der optionsVisible Variable gespeichert.*/
     if (options.classList.contains('show-options')) {
         optionsVisible++;
     } else { optionsVisible--; }
@@ -379,7 +392,7 @@ function showCounter(newPosition) {
 }
 
 
-function updateCardBody(i) {
+function updateCard(i) {
     changeCardBg(i);
     cardBody.classList.remove('result-card-body');
     cardBody.classList.add('card-body');
@@ -393,7 +406,7 @@ function updateQuiz() {
 }
 
 /*färbt richtige Antwort per Klassenänderung grün ein*/
-function renderRightAnswer(i) {
+function addClassRightAnswer(i) {
     let answerLink = document.getElementById(`answerlink${i}`);
     let answerLetter = document.getElementById(`answerletter${i}`);
     answerLink.classList.add('right-answer-link');
@@ -401,7 +414,7 @@ function renderRightAnswer(i) {
 }
 
 /*färbt falsche Antwort per Klassenänderung rot ein*/
-function renderWrongAnswer(i) {
+function addClassWrongAnswer(i) {
     let answerLink = document.getElementById(`answerlink${i}`);
     let answerLetter = document.getElementById(`answerletter${i}`);
     answerLink.classList.add('wrong-answer-link');
@@ -474,10 +487,7 @@ function updateProgressBar(trueFalse) {
     /*100 geteilt durch die länge des aktuellen Quiz,legt fest welche width die einzelnen Teile der Progress-bar haben werden*/
     let width = 100 / globalQuiz.length;
 
-    bar.innerHTML +=/*html*/`
-    <div class="progress-bar ${trueFalse} border-end" role="progressbar"  style="width: ${width}%">
-        </div>
-        `;
+    bar.innerHTML += getinnerHTMLProgressBar(trueFalse, width);
 }
 
 
@@ -492,14 +502,21 @@ function resetSwitchToggler() {
     input.checked = false;
 }
 
+/*zeigt richtige Antworten immer an wenn eingestellt*/
+function showRightAnswerIfSet(position) {
+    if (showRightAnswer == 1) {
+        addClassRightAnswer(globalQuiz[position]['rightAnswerId']);
+    }
+}
+
 /*stellt ein ob richtige Fragen immer angezeigt werden sollen*/
-function setDisplaySolution() {
+function setShowRightAnswer() {
     playAnySound('switch');
-    if (displayRightAnswer == 0) {
-        displayRightAnswer++;
+    if (showRightAnswer == 0) {
+        showRightAnswer++;
         setTimeout(showOptions, 277);
     } else {
-        displayRightAnswer--;
+        showRightAnswer--;
         setTimeout(showOptions, 277);
     }
 }
@@ -520,7 +537,7 @@ function playCheerSound() {
     let cheerSound = document.getElementById('cheer-sound');
     cheerSound.volume = 0.4;
     cheerSound.play();
-    setTimeout(function () { cheerSound.pause() }, 10000);
+    //setTimeout(function () { cheerSound.pause() }, 10000);
 
 }
 
