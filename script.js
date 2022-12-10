@@ -1,182 +1,7 @@
-let animal = [
-    {
-        'quizname': 'Tierwelt',
-        'question': 'Welches Tier hat drei Herzen?',
-        'answerA': 'Huhn',
-        'answerB': 'Tintenfisch',
-        'answerC': 'Wal',
-        'answerD': 'Krähe',
-        'solution': 'Tintenfisch',
-        'position': 0,
-        'rightAnswerId': 2
-    },
-    {
-        'question': 'Was ist ein Xoloitzcuintle?',
-        'answerA': 'Argentinischer Kampfhahn',
-        'answerB': 'Malaysischer Hirsch',
-        'answerC': 'Mexikanischer Nackthund',
-        'answerD': 'Afrikanischer Steppenvogel',
-        'solution': 'Mexikanischer Nackthund',
-        'position': 1,
-        'rightAnswerId': 3
-    },
-    {
-        'question': 'Bis zu wieviel Zähne wachsen einem Hai, während seines Lebens?',
-        'answerA': '30.000',
-        'answerB': '10.000',
-        'answerC': '500',
-        'answerD': '34',
-        'solution': '30.000',
-        'position': 2,
-        'rightAnswerId': 1
-    },
-    {
-        'question': 'Was passiert mit einem Goldfisch wenn man ihn im Dunkeln hält?',
-        'answerA': 'Stirbt',
-        'answerB': 'vermehrt sich',
-        'answerC': 'verliert seine Farbe',
-        'answerD': 'wird Blind',
-        'solution': 'verliert seine Farbe',
-        'position': 3,
-        'rightAnswerId': 3
-    },
-    {
-        'question': 'Welches am Land lebende Tier hat die größten Augen?',
-        'answerA': 'Strauß',
-        'answerB': 'Elefant',
-        'answerC': 'Deutsche Dogge',
-        'answerD': 'Walross',
-        'solution': 'Strauß',
-        'position': 4,
-        'rightAnswerId': 1
-    }
-];
-
-let history = [
-    {
-        'quizname': 'Geschichte',
-        'question': 'Warum warf man in der Schweiz in den 80ern, etwa 52.000 Hühneköpfe aus Helikoptern?',
-        'answerA': 'Seuchenexperimente',
-        'answerB': 'zur rettung des Fuchsbestands',
-        'answerC': 'zum vertreiben von Rehen',
-        'answerD': 'Oralimpfung für Füchse',
-        'solution': 'Oralimpfung für Füchse',
-        'position': 0,
-        'rightAnswerId': 4
-    },
-    {
-        'question': 'Wie hieß die Hauptstadt von Ostpreußen?',
-        'answerA': 'Lemberg',
-        'answerB': 'Insterburg',
-        'answerC': 'Königsberg',
-        'answerD': 'Warschau',
-        'solution': 'Königsberg',
-        'position': 1,
-        'rightAnswerId': 3
-    }, {
-        'question': 'Wann wurde das Deutsche Reich gegründet?',
-        'answerA': '1867',
-        'answerB': '1785',
-        'answerC': '1440',
-        'answerD': '1871',
-        'solution': '1871',
-        'position': 2,
-        'rightAnswerId': 4
-    }
-];
-
-let plants = [
-    {
-        'quizname': 'Pflanzenwelt',
-        'question': 'Welcher Baum verliert im Winter seine Nadeln?',
-        'answerA': 'Zeder',
-        'answerB': 'Eiche',
-        'answerC': 'Lärche',
-        'answerD': 'Tanne',
-        'solution': 'Lärche',
-        'position': 0,
-        'rightAnswerId': 3
-    },
-    {
-        'question': 'Was haben Menschen mit Pflanzen gemein?',
-        'answerA': 'Photosynthese',
-        'answerB': 'Schwitzen',
-        'answerC': 'Fieber',
-        'answerD': 'Muskelkater',
-        'solution': 'Fieber',
-        'position': 1,
-        'rightAnswerId': 3
-    },
-    {
-        'question': 'Nach was riecht der Titanwurz?',
-        'answerA': 'Zuckerwatte',
-        'answerB': 'Aas',
-        'answerC': 'Regenwald',
-        'answerD': 'Raubkatze',
-        'solution': 'Aas',
-        'position': 2,
-        'rightAnswerId': 2
-    }, {
-
-        'question': 'Welches Land wird wegen seiner riesigen Waldfächen, auch als Lunge der Erde bezeichnet?',
-        'answerA': 'China',
-        'answerB': 'Monaco',
-        'answerC': 'Grönland',
-        'answerD': 'Russland',
-        'solution': 'Russland',
-        'position': 3,
-        'rightAnswerId': 4
-    },
-    {
-        'question': 'Welches ist das grösste Lebewesen in der Natur?',
-        'answerA': 'Blauwal',
-        'answerB': 'Elefant',
-        'answerC': 'Riesenfaultier',
-        'answerD': 'Armillaria-Honigpilz',
-        'solution': 'Armillaria-Honigpilz',
-        'position': 4,
-        'rightAnswerId': 4
-    }
-];
-
-let space = [
-    {
-        'quizname': 'Weltall',
-        'question':
-            'Welcher Berg ist der höchste in unserem Sonnensystem?',
-        'answerA': 'Mount Everest',
-        'answerB': 'Zentralberg des Oberon',
-        'answerC': 'Zuckerberg in meinem Kaffee',
-        'answerD': 'Olympus Moons',
-        'solution': 'Olympus Moons',
-        'position': 0,
-        'rightAnswerId': 4
-    }, {
-        'quizname': 'Weltall',
-        'question': 'Was regnet es auf Saturn und Jupiter?',
-        'answerA': 'Diamanten',
-        'answerB': 'Wasser',
-        'answerC': 'Melonengroße Eisbrocken',
-        'answerD': 'flüssiges Methan',
-        'solution': 'Diamanten',
-        'position': 1,
-        'rightAnswerId': 1
-    }, {
-        'quizname': 'Weltall',
-        'question': 'Wie nennt man die Tag-Nacht-Grenze eines Himmelkörpers?',
-        'answerA': 'Zwielicht',
-        'answerB': 'Ying&Yang',
-        'answerC': 'Terminator',
-        'answerD': 'Sukusator',
-        'solution': 'Terminator',
-        'position': 2,
-        'rightAnswerId': 3
-    }
-];
-
 let rightAnswerCounter = 0;
 let optionsVisible = 0;
 let showRightAnswer = 0;
+let avoidClickingTwice = 0;
 
 
 function initQuiz(quiz, linkI) {
@@ -215,20 +40,35 @@ function startQuiz() {
 
 function proofAnswer(position, solution, answer, answerI) {
     let newPosition = position + 1; /*newPosition ist die Position der nächsten Frage*/
-    if (solution == answer) {
-        rightAnswerCounter++;
-        playAnySound('correct');
-        addClassRightAnswer(answerI);
-        updateProgressBar('bg-success');
-        setTimeout(function () { showNextQuestion(newPosition) }, 500);
-    } else {
-        playAnySound('wrong');
-        showRightAnswerIfSet(position);
-        addClassWrongAnswer(answerI);
-        updateProgressBar('bg-danger');
-        /* setTimeout(function () {}, 277) muss man so schreiben damit man variablen übergeben kann.*/
-        setTimeout(function () { showNextQuestion(newPosition) }, 500);
+
+    if (avoidClickingTwice == 0) {
+        if (solution == answer) {
+            rightAnswerCounter++;
+            playAnySound('correct');
+            addClassRightAnswer(answerI);
+            updateProgressBar('bg-success');
+            setTimeout(function () { showNextQuestion(newPosition), avoidClickingTwice--; }, 1000);
+        } else {
+
+            playAnySound('wrong');
+            showRightAnswerIfSet(position);
+            addClassWrongAnswer(answerI);
+            updateProgressBar('bg-danger');
+            /* setTimeout(function () {}, 277) muss man so schreiben damit man variablen übergeben kann.*/
+            setTimeout(function () { showNextQuestion(newPosition), avoidClickingTwice--; }, 1000);
+        }
+        avoidClickingTwice++;
     }
+
+}
+
+
+function disableAnswers() {
+    for (let i = 1; i < 5; i++) {
+        let anwers = document.getElementById(`answerlink${i}`);
+        anwers.classList.add('disabled');
+    }
+
 }
 
 
@@ -259,86 +99,6 @@ function showResult() {
     cardBody.classList.add('result-card-body');
 
     cardBody.innerHTML = getinnerHTMLResult();
-}
-
-
-function getinnerHTMLQuiz(currentQuiz) {
-    return /*html*/ `
-    <span class="question">${currentQuiz['question']}</span>
-
-    <div class="list-group">
-     
-        <a href="#" id="answerlink1" class="answer-link list-group-item" 
-                onclick="proofAnswer(${currentQuiz['position']},'${currentQuiz['solution']}','${currentQuiz['answerA']}',1)">
-            
-            <div id="answerletter1"  class="answer-letter">A</div>
-            <div class="answer-div">
-                <span>${currentQuiz['answerA']}</span>
-            </div>
-        </a>
-       
-        <a href="#" id="answerlink2" class="answer-link list-group-item"  
-                onclick="proofAnswer(${currentQuiz['position']},'${currentQuiz['solution']}','${currentQuiz['answerB']}',2)">
-            
-            <div id="answerletter2" class="answer-letter">B</div>    
-            <div class="answer-div">
-                <span>${currentQuiz['answerB']}</span>
-            </div>
-        </a>
-        
-        <a href="#" id="answerlink3" class="answer-link list-group-item"  
-                onclick="proofAnswer(${currentQuiz['position']},'${currentQuiz['solution']}','${currentQuiz['answerC']}',3)">
-            
-            <div id="answerletter3" class="answer-letter">C</div>
-            <div class="answer-div">
-                <span>${currentQuiz['answerC']}</span>
-            </div>
-        </a>
-  
-        <a href="#"  id="answerlink4" class="answer-link list-group-item" 
-                onclick="proofAnswer(${currentQuiz['position']},'${currentQuiz['solution']}','${currentQuiz['answerD']}',4)">
-            
-            <div id="answerletter4" class="answer-letter">D</div>
-            <div class="answer-div">
-                <span>${currentQuiz['answerD']}</span>
-            </div>
-        </a>
-
-    </div>
-    `;
-}
-
-
-function getinnerHTMLResult() {
-    return /*html*/`
-    <img class="result-img" src="img/brain result.png">
-        <div class="result-headline" >
-            <span>${globalQuiz[0]['quizname']} Quiz Vollendet</span>
-        </div>
-        
-        <div>
-            <span class="result-text">Richtige Fragen:</span> 
-            <span id="result" class="result">${rightAnswerCounter}</span> <span class="result" id="quiz-length">von ${globalQuiz.length}</span>
-        </div> 
-        
-        <div class="share-replay-btn">
-            <button type="button" class="btn btn-primary share-btn" id="share-button" onclick="shareResult()">
-                TEILEN
-            </button>
-            
-            <button type="button" class="btn btn-outline-primary transparent-btn-replay" onclick="startQuiz(globalQuiz)">
-                WIEDERHOLEN
-            </button>
-        </div>
-    `;
-}
-
-
-function getinnerHTMLProgressBar(trueFalse, width) {
-    return /*html*/`
-    <div class="progress-bar ${trueFalse} border-end" role="progressbar"  style="width: ${width}%">
-        </div>
-        `;
 }
 
 
@@ -405,6 +165,7 @@ function updateQuiz() {
     showHideTropy();
 }
 
+
 /*färbt richtige Antwort per Klassenänderung grün ein*/
 function addClassRightAnswer(i) {
     let answerLink = document.getElementById(`answerlink${i}`);
@@ -413,6 +174,7 @@ function addClassRightAnswer(i) {
     answerLetter.classList.add('right-answer-letter');
 }
 
+
 /*färbt falsche Antwort per Klassenänderung rot ein*/
 function addClassWrongAnswer(i) {
     let answerLink = document.getElementById(`answerlink${i}`);
@@ -420,6 +182,7 @@ function addClassWrongAnswer(i) {
     answerLink.classList.add('wrong-answer-link');
     answerLetter.classList.add('wrong-answer-letter');
 }
+
 
 /*hebt einzelnen Sidebar Link und Barke hervor*/
 function activateSidebarLink(position) {
@@ -434,6 +197,7 @@ function activateSidebarLink(position) {
 
 }
 
+
 /*macht alle Sidebar Links wieder anklickbar*/
 function activateSidebarLinks() {
     for (let i = 1; i < 5; i++) {
@@ -441,6 +205,7 @@ function activateSidebarLinks() {
         link.classList.remove('pointer-events-none');
     }
 }
+
 
 /*graut alle Sidebar Links ein*/
 function deActivateSidebarLinks() {
@@ -451,6 +216,7 @@ function deActivateSidebarLinks() {
         bark.classList.remove('card-link-active');
     }
 }
+
 
 /*macht das alle Siedebar Links nicht mehr anklickbar sind*/
 function sidebarLinksPointerNone() {
@@ -496,11 +262,13 @@ function clearProgressBar() {
     bar.innerHTML = '';
 }
 
+
 /*stellt sicher das der Optionen Schalter immer auf Aus ist, wenn die Seite lädt*/
 function resetSwitchToggler() {
     let input = document.getElementById('options-switch');
     input.checked = false;
 }
+
 
 /*zeigt richtige Antworten immer an wenn eingestellt*/
 function showRightAnswerIfSet(position) {
@@ -508,6 +276,7 @@ function showRightAnswerIfSet(position) {
         addClassRightAnswer(globalQuiz[position]['rightAnswerId']);
     }
 }
+
 
 /*stellt ein ob richtige Fragen immer angezeigt werden sollen*/
 function setShowRightAnswer() {
