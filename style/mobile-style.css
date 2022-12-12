@@ -1,0 +1,256 @@
+@media(max-width:660px) {
+
+    .sidebar-card img {
+        height: 3em;
+    }
+
+    .card-links {
+        transition: all 225ms ease-in-out;
+        font-size: 0.9em;
+    }
+
+    .card-title {
+        font-size: 1.1em;
+    }
+
+    .card-text {
+        font-size: 1em;
+    }
+
+    .share-replay-btn {
+        width: 10em;
+        height: 5.5em;
+    }
+
+    .button-start {
+        font-size: 1em !important;
+        right: 1em;
+        bottom: 1em;
+        width: 35%;
+        padding-top: 0.3em;
+        padding-bottom: 0.3em;
+    }
+
+    .start-btn-arrow {
+        top: 0.4em;
+    }
+
+    .answer-div {
+        font-size: 1em;
+    }
+
+    .card-body span:nth-child(1) {
+        font-size: 1em;
+    }
+}
+
+@media(max-width:600px) {
+    .card {
+        width: 30em;
+    }
+}
+
+@media(max-width:560px) {
+
+    .all-content {
+        height: auto;
+    }
+
+    .card {
+        width: 25em;
+        transition: all 225ms ease-in-out;
+        min-height: auto;
+    }
+
+    .inner-card {
+        min-height: auto;
+    }
+
+    .sidebar-card {
+        flex-direction: row;
+        width: 25em;
+        padding: 0.5em;
+        height: 4em;
+    }
+
+    .sidebar-card img {
+        display: none;
+    }
+
+    .sidebar-card a {
+        margin-left: 0em;
+    }
+
+    .card-right-div {
+        min-height: 18em;
+    }
+
+    .card-links {
+        justify-content: space-evenly;
+        flex-direction: row;
+        width: 21em;
+        height: fit-content;
+        margin-top: 0em;
+    }
+
+    .counter {
+        margin-top: 0em;
+        margin-right: 0em;
+        margin-left: 1em;
+
+    }
+
+    .start-btn-arrow {
+        height: 1em !important;
+        top: 0.6em;
+    }
+
+    .options {
+        height: 1.4em;
+    }
+
+    .button-start {
+        padding-right: 1.6em;
+    }
+
+    .tropy {
+        width: 4em;
+    }
+
+    .card-links-inner-div {
+        flex-direction: column-reverse;
+    }
+
+    .link-bark {
+        width: 3.3em;
+        height: 0.2em;
+    }
+
+}
+
+@media(max-width:400px) {
+    .card {
+        width: 100%;
+    }
+
+    .sidebar-card {
+        padding: 0em;
+    }
+
+    .card-links {
+        transition: all 225ms ease-in-out;
+        font-size: 0.8em;
+        width: 21em;
+    }
+
+    .card-link-active {
+        font-size: 1.2em !important;
+    }
+
+    .counter {
+        width: 4em;
+        height: 2.8em;
+        margin-top: 0em;
+        font-size: 0.66em;
+        margin-right: 3em;
+    }
+
+    .my-4 {
+        margin-top: 0.5em !important;
+        margin-bottom: 0.5em !important;
+    }
+
+    .switch {
+        width: 3em;
+        height: 1.4em;
+    }
+
+    .slider:before {
+        bottom: 0.15em;
+        width: 1.5em;
+        height: 1.5em;
+    }
+
+    input:checked+.slider:before {
+        -webkit-transform: translateX(2em);
+        -ms-transform: translateX(2em);
+        transform: translateX(2em);
+    }
+
+    .card-links-inner-div {
+        flex-direction: column-reverse;
+    }
+
+    .link-bark {
+        width: 100%;
+        height: 0.2em;
+    }
+}
+
+@media(max-height:500px) {
+    .card {
+        min-height: 19em;
+        max-width: 35em;
+    }
+
+    .inner-card {
+        min-height: 19em;
+    }
+
+    .sidebar-card img {
+        height: 3em;
+    }
+
+    .card-links-inner-div {
+        font-size: 0.9em;
+    }
+
+    .counter {
+        font-size: 0.7em;
+    }
+
+    .question {
+        max-width: 34em;
+        margin-bottom: 0em;
+        font-size: 0.7em;
+    }
+
+    .options {
+        height: 1.4em;
+    }
+
+    .hidden-options {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-evenly;
+        height: 6em;
+        width: 4em;
+        border: 1px solid rgb(211, 211, 211);
+        border-left: none;
+        border-radius: 0%;
+        border-top-right-radius: 20%;
+        border-bottom-right-radius: 20%;
+    }
+
+    .show-options {
+        transform: translateX(4em);
+    }
+
+    .hide-options {
+        transform: translateX(0em);
+    }
+
+    .answer-div {
+        font-size: 0.8em;
+    }
+
+    .answer-letter {
+        height: 1.5em;
+        width: 1.5em;
+        font-weight: 500;
+    }
+
+    .tropy {
+        width: 4em;
+    }
+}

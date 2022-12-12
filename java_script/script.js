@@ -291,6 +291,18 @@ function setShowRightAnswer() {
 }
 
 
+function showImpressumOrPrivacyPolicy(imp_pri) {
+    let impPri = document.getElementById(`${imp_pri}`);
+    impPri.classList.remove('d-none');
+}
+
+
+function closeImpressumOrPrivacyPolicy(imp_pri) {
+    let impPri = document.getElementById(`${imp_pri}`);
+    impPri.classList.add('d-none');
+}
+
+
 function playQuizSound() {
     stopAllAudio();
     let quizName = globalQuiz[0]['quizname'];
@@ -305,15 +317,15 @@ function playQuizSound() {
 function playCheerSound() {
     let cheerSound = document.getElementById('cheer-sound');
     cheerSound.volume = 0.4;
+    cheerSound.load();
     cheerSound.play();
-    //setTimeout(function () { cheerSound.pause() }, 10000);
-
 }
 
 
 function playFailureSound() {
     let failureSound = document.getElementById('failure-sound');
     failureSound.volume = 0.4;
+    failureSound.load();
     failureSound.play();
 }
 

@@ -146,7 +146,7 @@ let space = [
             'Welcher Berg ist der höchste in unserem Sonnensystem?',
         'answerA': 'Mount Everest',
         'answerB': 'Zentralberg des Oberon',
-        'answerC': 'Zuckerberg in meinem Kaffee',
+        'answerC': 'Hochfrottspitze',
         'answerD': 'Olympus Moons',
         'solution': 'Olympus Moons',
         'position': 0,
