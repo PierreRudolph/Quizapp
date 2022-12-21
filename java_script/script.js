@@ -127,11 +127,11 @@ function showOptions() {
         options.classList.add('show-options');
         options.classList.remove('hide-options');
     }
-    getOptionsStatus(options);
+    updateOptionsStatus(options);
 }
 
 
-function getOptionsStatus(options) {
+function updateOptionsStatus(options) {
     /*mit einer Klassenabfrage wird überprüft ob options offen ist,
         ob offen oder zu wird in der optionsVisible Variable gespeichert.*/
     if (options.classList.contains('show-options')) {
@@ -263,13 +263,6 @@ function clearProgressBar() {
 }
 
 
-/*stellt sicher das der Optionen Schalter immer auf Aus ist, wenn die Seite lädt*/
-function resetSwitchToggler() {
-    let input = document.getElementById('options-switch');
-    input.checked = false;
-}
-
-
 /*zeigt richtige Antworten immer an wenn eingestellt*/
 function showRightAnswerIfSet(position) {
     if (showRightAnswer == 1) {
@@ -283,10 +276,37 @@ function setShowRightAnswer() {
     playAnySound('switch');
     if (showRightAnswer == 0) {
         showRightAnswer++;
+        saveUserSetting('setting');
         setTimeout(showOptions, 277);
     } else {
         showRightAnswer--;
+        saveUserSetting('setting')
         setTimeout(showOptions, 277);
+    }
+}
+
+
+function saveUserSetting(key) {
+    localStorage.setItem(key, JSON.stringify(showRightAnswer));
+}
+
+
+function getUserSetting(key) {
+    let settingString = localStorage.getItem(key);
+    if (settingString) {
+        showRightAnswer = settingString;
+    }
+    setSwitchToggler();
+}
+
+
+function setSwitchToggler() {
+    let switchToggler = document.getElementById('options-switch');
+    if (showRightAnswer == 0) {
+        switchToggler.checked = false;
+    }
+    if (showRightAnswer == 1) {
+        switchToggler.checked = true;
     }
 }
 

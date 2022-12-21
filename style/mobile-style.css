@@ -185,6 +185,18 @@
         width: 100%;
         height: 0.2em;
     }
+
+    .privacy-policy h1 {
+        font-size: 1.7em;
+    }
+
+    .privacy-policy h2 {
+        font-size: 1.7em;
+    }
+
+    .privacy-policy h3 {
+        font-size: 1.7em;
+    }
 }
 
 @media(max-height:500px) {

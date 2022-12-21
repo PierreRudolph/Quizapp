@@ -434,6 +434,7 @@ input:checked+.slider:before {
 }
 
 .privacy-policy {
+    overflow: hidden;
     background-color: white;
     border-left: 1px solid gray;
     border-right: 1px solid gray;
