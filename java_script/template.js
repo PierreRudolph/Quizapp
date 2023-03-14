@@ -76,3 +76,13 @@ function getinnerHTMLProgressBar(trueFalse, width) {
         </div>
         `;
 }
+
+
+function getinnerHTMLIntro(quizName) {
+    return /*html*/`
+    <h5 class="card-title">Wilkommen zum ausergewöhnlichen<br> ${quizName} Quiz!</h5>
+    <p class="card-text">Bist du bereit für die Herausforderung?</p>
+    <button onclick="startQuiz()" type="button" class="btn btn-warning col-4 button-start">
+        START<img class="start-btn-arrow" src="img/arrow-right.png"></button>
+    `;
+}

@@ -4,11 +4,17 @@ let showRightAnswer = 0;
 let avoidClickingTwice = 0;
 
 
+/**
+ * This Function initiate the Quiz wich the user choose per click.
+ * 
+ * @param {string} quiz -name of the quiz to init.
+ * @param {number} linkI -Id-Number of the HTML element, wich the user clicked. 
+ */
 function initQuiz(quiz, linkI) {
     globalThis.globalQuiz = quiz; /*globalThis macht Variablen global nutzbar*/
     globalThis.cardBody = document.getElementById('card-body');
     playQuizSound();
-    updateCard(0) /*ändert hintergrung und klasse, des card-bodys*/
+    updateCard(0); /*ändert hintergrung und klasse, des card-bodys*/
     updateQuiz(); /* setzt parameter zurück*/
     showIntro();
     deActivateSidebarLinks(); /*graut alle Sidebarlinks ein*/
@@ -16,28 +22,32 @@ function initQuiz(quiz, linkI) {
 }
 
 
+/**
+ * This Function shows the Intro, of the globalQuiz wich defined
+ * in initQuiz() 
+ */
 function showIntro() {
-    let quizname = globalQuiz[0]['quizname'];
-
-    cardBody.innerHTML = /*html*/`
-    <h5 class="card-title">Wilkommen zum ausergewöhnlichen<br> ${quizname} Quiz!</h5>
-    <p class="card-text">Bist du bereit für die Herausforderung?</p>
-    <button onclick="startQuiz()" type="button" class="btn btn-warning col-4 button-start">
-        START<img class="start-btn-arrow" src="img/arrow-right.png"></button>
-    `;
+    let quizName = globalQuiz[0]['quizname'];
+    cardBody.innerHTML = getinnerHTMLIntro(quizName);
 }
 
 
 function startQuiz() {
     playAnySound('game-start');
-    updateQuiz()
+    updateQuiz();
     sidebarLinksPointerNone(); /*verhindert das anklicken der Links während man im Quiz ist*/
     showCounter(0);
-    updateCard(1)
+    updateCard(1);
     cardBody.innerHTML = getinnerHTMLQuiz(globalQuiz[0]);
 }
 
-
+/**
+ * 
+ * @param {number} position -position of the actual Question in the actual Quiz-Array
+ * @param {string} solution -the right Answer.
+ * @param {string} answer -answer, the user clicked.
+ * @param {number} answerI -Id to get the Answer in the HTML.
+ */
 function proofAnswer(position, solution, answer, answerI) {
     let newPosition = position + 1; /*newPosition ist die Position der nächsten Frage*/
 
@@ -49,7 +59,6 @@ function proofAnswer(position, solution, answer, answerI) {
             updateProgressBar('bg-success');
             setTimeout(function () { showNextQuestion(newPosition), avoidClickingTwice--; }, 1000);
         } else {
-
             playAnySound('wrong');
             showRightAnswerIfSet(position);
             addClassWrongAnswer(answerI);
@@ -72,6 +81,10 @@ function disableAnswers() {
 }
 
 
+/**
+ * 
+ * @param {number} newPosition -the position of the Next Question in the actual Quiz-Array.
+ */
 function showNextQuestion(newPosition) {
     if (newPosition < globalQuiz.length) { /*überprüft ob noch eine Frage übrig ist, ansonsten wird das Ergebnis angezeigt*/
         showCounter(newPosition);
@@ -131,15 +144,25 @@ function showOptions() {
 }
 
 
+/**
+ * This function proofs if the HTML-Element has the class 'show-options',
+ * to be sure if options open or not. The Result get Saved in a Var,
+ * called optionsVisible.
+ * 
+ * @param {element} options -Options-div.
+ */
 function updateOptionsStatus(options) {
-    /*mit einer Klassenabfrage wird überprüft ob options offen ist,
-        ob offen oder zu wird in der optionsVisible Variable gespeichert.*/
     if (options.classList.contains('show-options')) {
         optionsVisible++;
     } else { optionsVisible--; }
 }
 
 
+/**
+ * This function shows and update the Questions Counter.
+ * 
+ * @param {number} newPosition -position of the Next Question.
+ */
 function showCounter(newPosition) {
     let counterDiv = document.getElementById(`counter-div`);
     let Counter = document.getElementById(`current`);
